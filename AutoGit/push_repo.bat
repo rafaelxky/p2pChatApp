@@ -1,9 +1,17 @@
 :: push_repo.bat
-::@echo off
+@echo off
+setlocal enabledelayedexpansion
 
-:: Read repository path from path.txt
-set /p repoPath=<path.txt
+:: Read repository path and log file path from path.txt
+set count=0
+for /f "tokens=*" %%A in (path.txt) do (
+    set /a count+=1
+    if !count! equ 1 set "repoPath=%%A"
+    if !count! equ 2 set "logPath=%%A"
+)
+
 echo Repository path: "%repoPath%"
+echo Log file path: "%logPath%"
 cd /d "%repoPath%"
 
 :: Display available branches
@@ -19,25 +27,26 @@ set /p branchName=Enter branch name:
 :: Confirm before executing Git commands
 set /p confirm=Are you sure you want to commit and push? (Y/N): 
 if /I "%confirm%" NEQ "Y" (
+    echo Operation canceled. >> "%logPath%"
     echo Operation canceled.
     exit /b
 )
 
 :: Run Git commands and log output
-echo [%DATE% %TIME%] Running git add, commit, and push... >> git_log.txt
-git add . >> git_log.txt 2>&1
-echo [%DATE% %TIME%] Committing with message: "%commitMessage%" >> git_log.txt
-git commit -m "%commitMessage%" >> git_log.txt 2>&1
-echo [%DATE% %TIME%] Pushing to branch: "%branchName%" >> git_log.txt
-git push origin %branchName% >> git_log.txt 2>&1
-echo [%DATE% %TIME%] Git push completed. >> git_log.txt
+echo [%DATE% %TIME%] Running git add, commit, and push... >> "%logPath%"
+git add . >> "%logPath%" 2>&1
+echo [%DATE% %TIME%] Committing with message: "%commitMessage%" >> "%logPath%"
+git commit -m "%commitMessage%" >> "%logPath%" 2>&1
+echo [%DATE% %TIME%] Pushing to branch: "%branchName%" >> "%logPath%"
+git push origin %branchName% >> "%logPath%" 2>&1
+echo [%DATE% %TIME%] Git push completed. >> "%logPath%"
 
 :: Check if log file is empty, delete if it is
-for %%A in (git_log.txt) do if %%~zA==0 (
+for %%A in ("%logPath%") do if %%~zA==0 (
     echo No output generated. Deleting empty log file.
-    del git_log.txt
+    del "%logPath%"
 ) else (
-    echo Log updated in git_log.txt
+    echo Log updated in "%logPath%"
 )
 
 exit
