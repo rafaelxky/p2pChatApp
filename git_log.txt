@@ -6,3 +6,11 @@ warning: in the working copy of 'AutoGit/git_log.txt', LF will be replaced by CR
  rename push_repo.bat => AutoGit/push_repo.bat (100%)
  rename update_repo.bat => AutoGit/update_repo.bat (100%)
 [20/03/2025 19:04:17,75] Running git add, commit, and push... 
+warning: in the working copy of 'git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[main 7a9b3a6] updated auto git files
+ 2 files changed, 43 insertions(+)
+ create mode 100644 push_repo.bat
+To https://github.com/rafaelxky/p2pChatApp
+   cdc5dfd..7a9b3a6  main -> main
+[20/03/2025 19:04:21,45] Git push completed. 
+[20/03/2025 19:25:13,76] Running git add, commit, and push... 
