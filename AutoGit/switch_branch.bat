@@ -1,5 +1,10 @@
+:: switch_branch.bat
 @echo off
-cd /d "D:\p2pChatApp\EncriptedDataProgram\p2pChatApp"
+
+:: Read repository path from path.txt
+set /p repoPath=<path.txt
+echo Repository path: "%repoPath%"
+cd /d "%repoPath%"
 
 :: List all branches
 echo Available branches:
@@ -12,7 +17,6 @@ set /p branchName=Enter the branch you want to switch to:
 set /p confirm=Are you sure you want to switch to "%branchName%"? (Y/N): 
 if /I "%confirm%" NEQ "Y" (
     echo Operation canceled.
-    timeout /t 2 >nul
     exit /b
 )
 
@@ -21,6 +25,4 @@ git checkout %branchName% > git_branch_switch_log.txt 2>&1
 echo [%DATE% %TIME%] Switched to branch "%branchName%". >> git_branch_switch_log.txt
 
 :: Exit after completion
-echo Exiting in 3 seconds...
-timeout /t 3 >nul
 exit

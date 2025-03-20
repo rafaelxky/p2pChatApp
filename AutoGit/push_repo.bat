@@ -1,5 +1,10 @@
+:: push_repo.bat
 @echo off
-cd /d "D:\p2pChatApp\EncriptedDataProgram\p2pChatApp"
+
+:: Read repository path from path.txt
+set /p repoPath=<path.txt
+echo Repository path: "%repoPath%"
+cd /d "%repoPath%"
 
 :: Display available branches
 echo Available branches:
