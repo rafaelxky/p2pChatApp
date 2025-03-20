@@ -1,1 +1,8 @@
 [20/03/2025 19:03:13,36] Running git add, commit, and push... 
+warning: in the working copy of 'AutoGit/git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[main 9d286cb] AutoGit files
+ 4 files changed, 16 insertions(+), 6 deletions(-)
+ create mode 100644 AutoGit/git_log.txt
+ rename push_repo.bat => AutoGit/push_repo.bat (100%)
+ rename update_repo.bat => AutoGit/update_repo.bat (100%)
+[20/03/2025 19:04:17,75] Running git add, commit, and push... 
