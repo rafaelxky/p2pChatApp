@@ -33,3 +33,25 @@ To https://github.com/rafaelxky/p2pChatApp
    ef6331f..1d876b6  main -> main
 [20/03/2025 20:43:54,50] Git push completed. 
 [20/03/2025 21:02:38,98] Running git add, commit, and push... 
+warning: in the working copy of 'AutoGit/git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[20/03/2025 21:02:39,34] Committing with message: "test planning done in test.java" 
+[main 11e1354] test planning done in test.java
+ 15 files changed, 83 insertions(+), 15 deletions(-)
+ create mode 100644 Program/src/io/sourceWare/Tests/Tests.java
+ create mode 100644 Program/src/io/sourceWare/program/client/BootStrap.java
+ delete mode 100644 Program/src/io/sourceWare/program/client/CommunicationHandler.java
+ delete mode 100644 Program/src/io/sourceWare/program/client/EncryptionHandler.java
+ delete mode 100644 Program/src/io/sourceWare/program/client/UI.java
+ create mode 100644 Program/src/io/sourceWare/program/client/controller/Controller.java
+ create mode 100644 Program/src/io/sourceWare/program/client/model/connections/CommunicationHandler.java
+ rename Program/src/io/sourceWare/program/client/{ => model/connections}/TorStart.java (97%)
+ create mode 100644 Program/src/io/sourceWare/program/client/model/crypto/EncryptionHandler.java
+ create mode 100644 Program/src/io/sourceWare/program/client/model/file_handler/FileHandler.java
+ create mode 100644 Program/src/io/sourceWare/program/client/view/UI.java
+ create mode 100644 Program/src/io/sourceWare/program/client/view/consoleview/ConsoleView.java
+ rename Program/src/io/sourceWare/program/client/{ => view}/webcode/index.html (100%)
+[20/03/2025 21:02:39,63] Pushing to branch: "main" 
+To https://github.com/rafaelxky/p2pChatApp
+   1d876b6..11e1354  main -> main
+[20/03/2025 21:02:42,14] Git push completed. 
+[20/03/2025 22:53:39,40] Running git add, commit, and push... 
