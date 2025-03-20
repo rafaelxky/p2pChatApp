@@ -1,6 +1,10 @@
 @echo off
 cd /d "D:\p2pChatApp\EncriptedDataProgram\p2pChatApp"
 
+:: Display available branches
+echo Available branches:
+git branch -r
+
 :: Prompt for commit message
 set /p commitMessage=Enter commit message: 
 
