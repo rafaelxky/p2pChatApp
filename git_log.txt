@@ -14,3 +14,28 @@ To https://github.com/rafaelxky/p2pChatApp
    cdc5dfd..7a9b3a6  main -> main
 [20/03/2025 19:04:21,45] Git push completed. 
 [20/03/2025 19:25:13,76] Running git add, commit, and push... 
+warning: in the working copy of 'git_log.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'AutoGit/git_branch_switch_log.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'git_branch_switch_log.txt', LF will be replaced by CRLF the next time Git touches it
+[main 9d8ccf8] added more bat scripts for auto git
+ 7 files changed, 140 insertions(+)
+ create mode 100644 AutoGit/JavaBank_AutoCreateNewBranch.bat
+ create mode 100644 AutoGit/create_branch.bat
+ create mode 100644 AutoGit/git_branch_switch_log.txt
+ rename AutoGit/{update_repo.bat => pull_repo.bat} (100%)
+ create mode 100644 AutoGit/switch_branch.bat
+ create mode 100644 git_branch_switch_log.txt
+To https://github.com/rafaelxky/p2pChatApp
+   7a9b3a6..9d8ccf8  main -> main
+[20/03/2025 19:25:18,75] Git push completed. 
+[20/03/2025 19:25:26,13] Running git pull... 
+From https://github.com/rafaelxky/p2pChatApp
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[20/03/2025 19:25:27,40] Git pull completed. 
+[20/03/2025 19:27:06,49] Running git pull... 
+From https://github.com/rafaelxky/p2pChatApp
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[20/03/2025 19:27:07,53] Git pull completed. 
+[20/03/2025 19:27:28,21] Running git add, commit, and push... 
