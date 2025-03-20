@@ -1,5 +1,5 @@
 :: push_repo.bat
-@echo off
+::@echo off
 
 :: Read repository path from path.txt
 set /p repoPath=<path.txt
