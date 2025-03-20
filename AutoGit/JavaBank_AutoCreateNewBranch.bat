@@ -1,6 +1,10 @@
 @echo off
 cd /d "D:\p2pChatApp\EncriptedDataProgram\p2pChatApp"
 
+:: Display available branches
+echo Available branches:
+git branch -r
+
 :: Prompt for branch name to checkout from my-javabank
 set /p branchName=Enter the branch you want to push to from my-javabank: 
 
@@ -27,7 +31,6 @@ set /p confirm=Are you sure you want to proceed with these actions? (Y/N):
 if /I "%confirm%" NEQ "Y" (
     echo Operation canceled. >> git_javabank_log.txt
     echo Operation canceled.
-    timeout /t 2 >nul
     exit /b
 )
 
@@ -71,7 +74,6 @@ echo [%DATE% %TIME%] Pushing new branch "%newBranch%" to my-javabank... >> git_j
 echo Pushing new branch "%newBranch%" to my-javabank...
 git push my-javabank %newBranch% >> git_javabank_log.txt
 
-echo [%DATE% %TIME%] Process completed successfully. Exiting in 3 seconds... >> git_javabank_log.txt
-echo Process completed successfully. Exiting in 3 seconds...
-timeout /t 3 >nul
+echo [%DATE% %TIME%] Process completed successfully. Exiting... >> git_javabank_log.txt
+echo Process completed successfully. Exiting...
 exit

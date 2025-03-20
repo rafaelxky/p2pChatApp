@@ -65,3 +65,15 @@ To https://github.com/rafaelxky/p2pChatApp
    b6b2cfe..3e9db0a  main -> main
 [20/03/2025 19:30:25,26] Git push completed. 
 [20/03/2025 19:31:33,94] Running git add, commit, and push... 
+warning: in the working copy of 'git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[main 1ec931b] updates to auto git
+ 2 files changed, 11 insertions(+)
+To https://github.com/rafaelxky/p2pChatApp
+   3e9db0a..1ec931b  main -> main
+[20/03/2025 19:31:37,93] Git push completed. 
+[20/03/2025 19:32:50,67] Running git pull from main... 
+From https://github.com/rafaelxky/p2pChatApp
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[20/03/2025 19:32:51,77] Git pull from main completed. 
+[20/03/2025 19:36:59,56] Running git add, commit, and push... 

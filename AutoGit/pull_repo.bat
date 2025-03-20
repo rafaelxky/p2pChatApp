@@ -1,6 +1,10 @@
 @echo off
 cd /d "D:\p2pChatApp\EncriptedDataProgram\p2pChatApp"
 
+:: Display available branches
+echo Available branches:
+git branch -r
+
 :: Prompt for branch name
 set /p branchName=Enter the branch you want to pull from: 
 
