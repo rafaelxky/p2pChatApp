@@ -3,6 +3,18 @@ Make branches
 Create documentation
 
 //Documentation:
+@ Project git repo
+https://github.com/rafaelxky/p2pChatApp
+
+@ tor codebase cocumentation
+https://tor-core.readthedocs.io/en/latest/index.html
+
+@ onion service setup
+https://community.torproject.org/onion-services/setup/
+
+@ tor messaging app
+https://blog.torproject.org/tor-messenger-beta-chat-over-tor-easily/
+
 
 
 //Issues: 

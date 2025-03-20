@@ -1,1 +1,10 @@
 [20/03/2025 20:07:21,83] Running git add, commit, and push... 
+warning: in the working copy of 'git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[20/03/2025 20:07:22,37] Committing with message: "updated path.txt to add the logs path" 
+[main 97cf959] updated path.txt to add the logs path
+ 5 files changed, 56 insertions(+), 21 deletions(-)
+[20/03/2025 20:07:22,80] Pushing to branch: "main" 
+To https://github.com/rafaelxky/p2pChatApp
+   e5d1ae7..97cf959  main -> main
+[20/03/2025 20:07:25,73] Git push completed. 
+[20/03/2025 20:26:18,13] Running git add, commit, and push... 

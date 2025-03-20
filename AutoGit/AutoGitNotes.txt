@@ -1,0 +1,10 @@
+add the reading of the log path (second line) to:
+- create branch
+- jbank auto create
+- switch branch
+
+create central program from wich I can execute any of the other scripts
+
+path.txt
+1st line - local git repo path
+2nd line - logs.txt path
