@@ -8,3 +8,13 @@ To https://github.com/rafaelxky/p2pChatApp
    e5d1ae7..97cf959  main -> main
 [20/03/2025 20:07:25,73] Git push completed. 
 [20/03/2025 20:26:18,13] Running git add, commit, and push... 
+warning: in the working copy of 'AutoGit/git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[20/03/2025 20:26:18,73] Committing with message: "added the documentation links again" 
+[main ef6331f] added the documentation links again
+ 4 files changed, 32 insertions(+), 2 deletions(-)
+ create mode 100644 AutoGit/AutoGitNotes.txt
+[20/03/2025 20:26:19,50] Pushing to branch: "main" 
+To https://github.com/rafaelxky/p2pChatApp
+   97cf959..ef6331f  main -> main
+[20/03/2025 20:26:22,62] Git push completed. 
+[20/03/2025 20:43:50,64] Running git add, commit, and push... 

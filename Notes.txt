@@ -27,3 +27,6 @@ https://blog.torproject.org/tor-messenger-beta-chat-over-tor-easily/
 - tor/tor.exe -f tor/torrc
 @ try:
 - creating a batch file with the run command
+
+#title: intelij folder using Compact Middle Packages
+@ Solution: to the right of packages, when you hover, press the 3 dots, select apearence, unselect Compact Middle Packages.
