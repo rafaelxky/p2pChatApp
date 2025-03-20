@@ -11,7 +11,6 @@ set /p branchName=Enter branch name:
 set /p confirm=Are you sure you want to commit and push? (Y/N): 
 if /I "%confirm%" NEQ "Y" (
     echo Operation canceled.
-    pause
     exit /b
 )
 
@@ -30,4 +29,4 @@ for %%A in (git_log.txt) do if %%~zA==0 (
     echo Log updated in git_log.txt
 )
 
-pause
+exit
