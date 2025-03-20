@@ -1,4 +1,4 @@
-package io.sourceWare.Client;
+package io.sourceWare.client;
 
 public class CommunicationHandler {
 

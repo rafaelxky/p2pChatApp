@@ -1,4 +1,4 @@
-package io.sourceWare.Client;
+package io.sourceWare.client;
 
 import java.io.File;
 import java.io.IOException;
@@ -41,6 +41,8 @@ public class TorStart {
             System.out.println("❌ Tor failed to start.");
         }
     }
+
+
 
     // setup hidden services
     public static void TorHiddenServiceSetup() throws IOException, InterruptedException {
