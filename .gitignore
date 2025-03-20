@@ -25,3 +25,6 @@ replay_pid*
 
 # Mac storage
 .DS_STORE
+
+# Keys
+hidden_service
