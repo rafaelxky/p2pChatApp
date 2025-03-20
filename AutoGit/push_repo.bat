@@ -28,9 +28,9 @@ echo [%DATE% %TIME%] Running git add, commit, and push... >> git_log.txt
 git add . >> git_log.txt 2>&1
 echo [%DATE% %TIME%] Committing with message: "%commitMessage%" >> git_log.txt
 git commit -m "%commitMessage%" >> git_log.txt 2>&1
+echo [%DATE% %TIME%] Pushing to branch: "%branchName%" >> git_log.txt
 git push origin %branchName% >> git_log.txt 2>&1
 echo [%DATE% %TIME%] Git push completed. >> git_log.txt
-
 
 :: Check if log file is empty, delete if it is
 for %%A in (git_log.txt) do if %%~zA==0 (
