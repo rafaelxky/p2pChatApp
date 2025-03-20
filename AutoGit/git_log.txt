@@ -18,3 +18,18 @@ To https://github.com/rafaelxky/p2pChatApp
    97cf959..ef6331f  main -> main
 [20/03/2025 20:26:22,62] Git push completed. 
 [20/03/2025 20:43:50,64] Running git add, commit, and push... 
+warning: in the working copy of 'AutoGit/git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[20/03/2025 20:43:51,03] Committing with message: "added a issue in the notes with the solution regarding intelij and Compact Middle Packages" 
+[main 1d876b6] added a issue in the notes with the solution regarding intelij and Compact Middle Packages
+ 8 files changed, 13 insertions(+)
+ rename Program/src/io/sourceWare/{ => program}/client/Client.java (100%)
+ rename Program/src/io/sourceWare/{ => program}/client/CommunicationHandler.java (100%)
+ rename Program/src/io/sourceWare/{ => program}/client/EncryptionHandler.java (100%)
+ rename Program/src/io/sourceWare/{ => program}/client/TorStart.java (100%)
+ rename Program/src/io/sourceWare/{ => program}/client/UI.java (100%)
+ rename Program/src/io/sourceWare/{ => program/client}/webcode/index.html (100%)
+[20/03/2025 20:43:51,64] Pushing to branch: "main" 
+To https://github.com/rafaelxky/p2pChatApp
+   ef6331f..1d876b6  main -> main
+[20/03/2025 20:43:54,50] Git push completed. 
+[20/03/2025 21:02:38,98] Running git add, commit, and push... 
