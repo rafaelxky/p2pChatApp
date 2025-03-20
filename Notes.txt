@@ -1,10 +1,13 @@
-Notes:
+//Notes:
 Make branches
 
+//Documentation:
 
-@ Issue: 
-#title Tor adress gen issue:
-#date 20/mar/2025
+
+//Issues: 
+#title: Tor adress gen issue:
+#date: 20/mar/2025
+@ Desc:
 - Tor isn´t running with proper config and not generating the adress
 @ Temp solution:
 - Run tor with proper run config from terminal
