@@ -1,1 +1,11 @@
+Notes:
+Make branches
 
+Issues: 
+
+Tor adress gen issue:
+20/mar/2025
+Tor isn´t running with proper config and not generating the adress
+Temp solution:
+Run tor with proper run config from terminal
+tor/tor.exe -f tor/torrc
