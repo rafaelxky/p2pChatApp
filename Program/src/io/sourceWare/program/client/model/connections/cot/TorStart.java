@@ -1,5 +1,5 @@
 // gets the onion address and starts tor services
-package io.sourceWare.program.client.model.connections;
+package io.sourceWare.program.client.model.connections.cot;
 
 import java.io.File;
 import java.io.IOException;

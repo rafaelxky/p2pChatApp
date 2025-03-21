@@ -1,4 +1,6 @@
-package io.sourceWare.program.client.model.connections;
+package io.sourceWare.program.client.model.connections.client_server;
+
+import io.sourceWare.program.client.model.connections.client_server.ClientHandler;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -7,7 +9,6 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 

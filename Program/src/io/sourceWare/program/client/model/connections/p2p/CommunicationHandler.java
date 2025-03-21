@@ -1,4 +1,4 @@
-package io.sourceWare.program.client.model.connections;
+package io.sourceWare.program.client.model.connections.p2p;
 
 public class CommunicationHandler {
     // handles all forms of communication

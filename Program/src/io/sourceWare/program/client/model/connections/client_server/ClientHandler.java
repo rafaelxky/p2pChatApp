@@ -1,4 +1,4 @@
-package io.sourceWare.program.client.model.connections;
+package io.sourceWare.program.client.model.connections.client_server;
 
 import java.io.BufferedReader;
 import java.io.IOException;
