@@ -99,3 +99,19 @@ Fast-forward
  rename out/production/Program/io/sourceWare/{WebCode => program/client/view/webcode}/index.html (89%)
 [24/03/2025 16:49:19,88] Git pull from main completed. 
 [24/03/2025 18:04:43,43] Running git add, commit, and push... 
+warning: in the working copy of 'AutoGit/git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[24/03/2025 18:04:43,80] Committing with message: "finished udp package sending and receiving, added warning for unknown connections, created a popups class, the connection classes now work in diferent threads" 
+[main 87937df] finished udp package sending and receiving, added warning for unknown connections, created a popups class, the connection classes now work in diferent threads
+ 10 files changed, 152 insertions(+), 47 deletions(-)
+ create mode 100644 Program/src/io/sourceWare/program/client/model/connections/ConnectionData.java
+ delete mode 100644 Program/src/io/sourceWare/program/client/model/connections/Vars.java
+ create mode 100644 Program/src/io/sourceWare/program/client/model/connections/p2p/ReceiveUdpPacket.java
+ rename Program/src/io/sourceWare/program/client/model/connections/p2p/{sendUdpPacket.java => SendUdpPacket.java} (69%)
+ delete mode 100644 Program/src/io/sourceWare/program/client/model/connections/p2p/receiveUpdPacket.java
+ create mode 100644 Program/src/io/sourceWare/program/client/view/Popus.java
+ create mode 100644 Tech.txt
+[24/03/2025 18:04:44,34] Pushing to branch: "main" 
+To https://github.com/rafaelxky/p2pChatApp
+   1b7a978..87937df  main -> main
+[24/03/2025 18:04:48,58] Git push completed. 
+[24/03/2025 19:45:13,93] Running git add, commit, and push... 

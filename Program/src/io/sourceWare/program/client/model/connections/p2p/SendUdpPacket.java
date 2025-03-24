@@ -5,21 +5,30 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.SocketException;
 
 public class SendUdpPacket implements Runnable{
     String localAddress = ConnectionData.localAddress;
     Integer localPort = ConnectionData.localPort;
     String foreignAddress = ConnectionData.foreignAddress;
     Integer foreignPort = ConnectionData.foreignPort;
+    DatagramSocket socket = null;
+    String message = "Hello World";
+
+    public SendUdpPacket(String message) {
+        this.message = message;
+    }
 
     @Override
     public void run() {
-            String message = "Hello World";
-        DatagramSocket socket = null;
-        try {
-            socket = new DatagramSocket();
+        createDatagramSocket();
+        sendUdpPackage();
+    }
 
-        byte[] sendData = message.getBytes();
+    public void sendUdpPackage(){
+        try {
+
+            byte[] sendData = message.getBytes();
             InetAddress serverIP = InetAddress.getByName(foreignAddress);
             DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, serverIP, foreignPort);
             socket.send(sendPacket);
@@ -28,4 +37,17 @@ public class SendUdpPacket implements Runnable{
             throw new RuntimeException(e);
         }
     }
+
+    public void createDatagramSocket() {
+        try {
+
+            socket = new DatagramSocket();
+
+
+        } catch (SocketException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }

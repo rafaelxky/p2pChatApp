@@ -14,7 +14,7 @@ public class PlayGround {
 
         Thread.sleep(100);
 
-        Thread sendThread = new Thread(new SendUdpPacket());
+        Thread sendThread = new Thread(new SendUdpPacket("Hello World!"));
         sendThread.start();
         System.out.println("send start");
 
