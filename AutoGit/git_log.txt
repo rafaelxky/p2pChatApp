@@ -127,3 +127,13 @@ To https://github.com/rafaelxky/p2pChatApp
    87937df..9b1be5c  main -> main
 [24/03/2025 19:45:21,28] Git push completed. 
 [24/03/2025 20:37:42,27] Running git add, commit, and push... 
+warning: in the working copy of 'AutoGit/git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[24/03/2025 20:37:43,60] Committing with message: "wrote test for popups" 
+[main eef9b41] wrote test for popups
+ 6 files changed, 84 insertions(+), 19 deletions(-)
+ create mode 100644 out/production/Program/io/sourceWare/program/client/Data/configs.txt
+[24/03/2025 20:37:47,27] Pushing to branch: "main" 
+To https://github.com/rafaelxky/p2pChatApp
+   9b1be5c..eef9b41  main -> main
+[24/03/2025 20:37:50,35] Git push completed. 
+[24/03/2025 20:57:46,24] Running git add, commit, and push... 
