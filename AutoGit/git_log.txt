@@ -115,3 +115,15 @@ To https://github.com/rafaelxky/p2pChatApp
    1b7a978..87937df  main -> main
 [24/03/2025 18:04:48,58] Git push completed. 
 [24/03/2025 19:45:13,93] Running git add, commit, and push... 
+warning: in the working copy of 'AutoGit/git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[24/03/2025 19:45:15,71] Committing with message: "wrote upd connection tests, added a volatile variable to store the incoming messages in Connection Data" 
+[main 9b1be5c] wrote upd connection tests, added a volatile variable to store the incoming messages in Connection Data
+ 8 files changed, 183 insertions(+), 14 deletions(-)
+ create mode 100644 Program/src/io/sourceWare/Tests/PopupsTest.java
+ create mode 100644 Program/src/io/sourceWare/Tests/UdpConnectionTest.java
+ create mode 100644 Program/src/io/sourceWare/program/client/Data/configs.txt
+[24/03/2025 19:45:17,71] Pushing to branch: "main" 
+To https://github.com/rafaelxky/p2pChatApp
+   87937df..9b1be5c  main -> main
+[24/03/2025 19:45:21,28] Git push completed. 
+[24/03/2025 20:37:42,27] Running git add, commit, and push... 

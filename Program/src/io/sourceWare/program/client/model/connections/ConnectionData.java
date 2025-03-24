@@ -18,7 +18,7 @@ public class ConnectionData {
     public static Integer localPort = datagramSocket.getLocalPort();
     public static String foreignAddress = "127.0.0.1";
     public static Integer foreignPort = 9001;
-    public static volatile String message = null;
+    public static volatile String message = "default";
 
     static {
         try {
@@ -27,11 +27,6 @@ public class ConnectionData {
             throw new RuntimeException(e);
         }
     }
-
-
-
-
-
 
     public static DatagramSocket getDatagramSocket() {
         return datagramSocket;
@@ -93,5 +88,5 @@ public class ConnectionData {
         foreignAddress = address;
         foreignPort = port;
     }
-    
+
 }

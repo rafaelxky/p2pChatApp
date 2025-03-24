@@ -8,29 +8,52 @@ import java.net.Socket;
 
 public class UdpConnectionTest {
     public static void main(String[] args) {
-        System.out.println("Send and receive package test: " + sendAndReceiveUdpPackagesTest());
+        start();
     }
+
+    public static void start(){
+        System.out.println("Send and receive package test: " + sendAndReceiveUdpPackagesTest());
+        System.out.println("Message received: " + ConnectionData.getMessage() + (ConnectionData.getMessage().equals("Test message") ? " ✅" : " ❌"));
+    }
+
     public static void udpSendTest(){
-        System.out.println("Trying to send UDP packet.");
+        System.out.println("Trying to send UDP packet ⏳");
         Thread sendPacket = new Thread(new SendUdpPacket("Test message"));
         sendPacket.start();
+        System.out.println("Finished sending UPD data ⏳");
     }
 
     public static String udpReceiveTest(){
-        String msg = "Trying to receive UDP packet.";
-        System.out.println(msg);
+        System.out.println("Trying to receive UDP packet ⏳");
         Thread receivePacket = new Thread(new ReceiveUdpPacket());
         receivePacket.start();
-        if (ConnectionData.getMessage().equals(msg)){
-            return "passed :)";
+        udpSendTest();
+
+        try {
+            Thread.sleep(20);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
-        return "failed :(";
+
+        String out = ConnectionData.getMessage();
+
+        if (out.equals("default")){
+            System.out.println("Received no UDP data ❌");
+            return "failed ❌";
+        }
+
+        System.out.println("UDP receive test passed ✅");
+        return "Test message";
     }
 
     public static String sendAndReceiveUdpPackagesTest(){
-        System.out.println("Starting UDP send and receive test.");
-        udpSendTest();
-        return udpReceiveTest();
+        System.out.println("Starting UDP send and receive test ⏳");
+        String msg = udpReceiveTest();
+
+            if (ConnectionData.getMessage().equals(msg)){
+                return "passed ✅";
+            }
+        return "failed ❌";
     }
 
 }
