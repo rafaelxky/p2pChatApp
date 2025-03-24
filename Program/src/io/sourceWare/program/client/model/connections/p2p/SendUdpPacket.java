@@ -1,18 +1,16 @@
 package io.sourceWare.program.client.model.connections.p2p;
-
-import io.sourceWare.program.client.model.connections.Vars;
+import io.sourceWare.program.client.model.connections.ConnectionData;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
-import java.net.SocketException;
 
-public class sendUdpPacket implements Runnable{
-    String localAddress = Vars.localAddress;
-    Integer localPort = Vars.localPort;
-    String foreignAddress = Vars.foreignAddress;
-    Integer foreignPort = Vars.foreignPort;
+public class SendUdpPacket implements Runnable{
+    String localAddress = ConnectionData.localAddress;
+    Integer localPort = ConnectionData.localPort;
+    String foreignAddress = ConnectionData.foreignAddress;
+    Integer foreignPort = ConnectionData.foreignPort;
 
     @Override
     public void run() {
