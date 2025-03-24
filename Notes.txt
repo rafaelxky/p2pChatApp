@@ -30,3 +30,13 @@ https://blog.torproject.org/tor-messenger-beta-chat-over-tor-easily/
 
 #title: intelij folder using Compact Middle Packages
 @ Solution: to the right of packages, when you hover, press the 3 dots, select apearence, unselect Compact Middle Packages.
+
+//Usefull commands:
+@ Receive TCP packets with ncat
+- ncat -l 127.0.0.1 9001
+@ Send TCP packets with ncat
+- ncat 127.0.0.1 9001
+@ Receive UPD packets with ncat
+- ncat -lu 127.0.0.1 9001
+@ Send UPD packets with ncat
+- ncat -u 127.0.0.1 9001

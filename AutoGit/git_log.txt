@@ -55,3 +55,47 @@ To https://github.com/rafaelxky/p2pChatApp
    1d876b6..11e1354  main -> main
 [20/03/2025 21:02:42,14] Git push completed. 
 [20/03/2025 22:53:39,40] Running git add, commit, and push... 
+warning: in the working copy of 'AutoGit/git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[20/03/2025 22:53:40,07] Committing with message: "20/03/25 final daily push" 
+[main 40011e1] 20/03/25 final daily push
+ 1 file changed, 22 insertions(+)
+[20/03/2025 22:53:40,57] Pushing to branch: "main" 
+To https://github.com/rafaelxky/p2pChatApp
+   11e1354..40011e1  main -> main
+[20/03/2025 22:53:42,85] Git push completed. 
+[24/03/2025 16:49:16,70] Running git pull from main... 
+From https://github.com/rafaelxky/p2pChatApp
+ * branch            main       -> FETCH_HEAD
+   40011e1..1b7a978  main       -> origin/main
+Updating 40011e1..1b7a978
+Fast-forward
+ .idea/uiDesigner.xml                               | 124 ++++++++++++++++++
+ Program/src/io/sourceWare/PlayGround.java          |   9 +-
+ .../src/io/sourceWare/program/client/Client.java   |   5 -
+ .../src/io/sourceWare/program/client/Program.java  |   5 +
+ .../model/connections/CommunicationHandler.java    |   7 --
+ .../program/client/model/connections/Vars.java     |   8 ++
+ .../model/connections/client_server/Client.java    |   5 +
+ .../connections/client_server/ClientHandler.java   | 138 +++++++++++++++++++++
+ .../model/connections/client_server/Server.java    |  95 ++++++++++++++
+ .../model/connections/{ => cot}/TorStart.java      |   2 +-
+ .../model/connections/p2p/receiveUpdPacket.java    |  26 ++++
+ .../model/connections/p2p/sendUdpPacket.java       |  33 +++++
+ .../io/sourceWare/program/client/util/Colors.java  |  14 +++
+ .../client/view/webcode}/index.html                |   3 +-
+ 14 files changed, 457 insertions(+), 17 deletions(-)
+ create mode 100644 .idea/uiDesigner.xml
+ delete mode 100644 Program/src/io/sourceWare/program/client/Client.java
+ create mode 100644 Program/src/io/sourceWare/program/client/Program.java
+ delete mode 100644 Program/src/io/sourceWare/program/client/model/connections/CommunicationHandler.java
+ create mode 100644 Program/src/io/sourceWare/program/client/model/connections/Vars.java
+ create mode 100644 Program/src/io/sourceWare/program/client/model/connections/client_server/Client.java
+ create mode 100644 Program/src/io/sourceWare/program/client/model/connections/client_server/ClientHandler.java
+ create mode 100644 Program/src/io/sourceWare/program/client/model/connections/client_server/Server.java
+ rename Program/src/io/sourceWare/program/client/model/connections/{ => cot}/TorStart.java (98%)
+ create mode 100644 Program/src/io/sourceWare/program/client/model/connections/p2p/receiveUpdPacket.java
+ create mode 100644 Program/src/io/sourceWare/program/client/model/connections/p2p/sendUdpPacket.java
+ create mode 100644 Program/src/io/sourceWare/program/client/util/Colors.java
+ rename out/production/Program/io/sourceWare/{WebCode => program/client/view/webcode}/index.html (89%)
+[24/03/2025 16:49:19,88] Git pull from main completed. 
+[24/03/2025 18:04:43,43] Running git add, commit, and push... 
