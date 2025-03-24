@@ -8,9 +8,9 @@ import java.io.IOException;
 
 public class PlayGround {
     public static void main(String[] args) throws IOException, InterruptedException {
-        Thread receiveThread = new Thread(new ReceiveUdpPacket());
-        receiveThread.start();
-        System.out.println("receiving start");
+        //Thread receiveThread = new Thread(new ReceiveUdpPacket());
+        //receiveThread.start();
+        //System.out.println("receiving start");
 
         Thread.sleep(100);
 
@@ -18,7 +18,5 @@ public class PlayGround {
         sendThread.start();
         System.out.println("send start");
 
-        System.out.println("Testing popups...");
-        Popus.unknownConnection();
     }
 }
