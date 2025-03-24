@@ -16,7 +16,9 @@ public class ReceiveUdpPacket implements Runnable {
 
     @Override
     public void run() {
-        receiveUdpPackage();
+        while (true) {
+            receiveUdpPackage();
+        }
     }
 
     public String receiveUdpPackage(){
