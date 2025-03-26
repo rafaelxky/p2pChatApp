@@ -1,0 +1,112 @@
+How to connect users:
+NAT treversal:
+- STUN servers
+- WebRTC
+
+Proxis:
+Tor
+VPN
+
+P2p connection:
+UDP hole punching
+
+In order to implemente a dns system, each computer can have a registry of peers they know, it stores their adress and unique ID
+Then to encounter them you send data to computers you know and they will ask computers they know if it exists.
+If they find it,send you back its data and add it to your registree.
+When you connect to a peer, the diferente entries will be joined.
+The repeated entries will be kept and a conter will be incremented.
+It will only pick the one with the biggest conter to avoid fraud.
+This works much like a router.
+
+In order to hide ip adresses,
+we will encript our ip and send it to connections we know about,
+then ask this connections if the encripted adress is theirs.
+If not they will ask their neighbours.
+If yes, reconstruct the path and send back to you a randevouz point were the communication will happen.
+This middle computer will be the one who knows both Ips.
+Alternitevly,both computers may connect to another node that then connects to that one keeping 1 more layer of separation from the middle.
+What matters is that you never know the IP of who you connect to, ratter you only know random strangers adresses.
+The middle node must also change every so ofter to have more redundency.
+This avoids having a single point of failure.
+The middle node also doesnt know the message since its encripted.
+The middle node doesnt need to know the ip adress of the communicating nodes either and vice versa if they use the system of asking if the hashed ip is theirs, but that slows down the connection since every message must go trough the process of discovery.
+
+To encrypt data we can use:
+Private Keys were the message gets sent arround multiple times in the following order:
+A encripts and sends to B
+B encripts and sends to A
+A decripts and sends to B
+B decripts and reads the message
+This system is good but is vulnerable to mitm atacks since na intruder can falsify a key.
+Instead we can use a public key like so:
+A and B agree on a prime number and a generator wich can be publicly shared
+A and B generate diferente private numbers
+they perform operations on these numbers 
+They then send them to each other publicly
+the other receives and perfors operations on the received number
+by the end, both ends have the same key but anyone with the 2 publicly sent numbers cannot find that same key
+The equation is:
+a is the original number,
+
+A = g^a mod p
+
+This same equation is done on both the received and original data.
+So the final received number would be:
+a and b are the original numbers,
+
+S = B^a mod p = (g^b mod p)^a mod p
+
+
+But there is na issue.
+We assume the nodes are trustworthy and that they wont falsely claim they are a diferente node.
+However we must create a system to prevent this from happening.
+
+For this we need a private key and a public key that is matematically linked to the private one.
+We also need to make so that the receiver and each node has acess to the public key to verify the message.
+When node A sends a message it hashes with the private key and signs the message.
+Then when B receives it, it must decrypt the signature to find if its trully from A. 
+After, it will encrypt the message with its own private key and sign it.
+If a node is malitious and alters the data, then any relay can compare the hash with the message.
+For example if C is malitious and alters A's message, D will find a missmatch metween A's hash and C's hash and will regect the message.
+
+Ex:
+Person A (the signer) has a private key d
+
+Person B (the verifier) has a public key e
+
+The two keys are linked through modular arithmetic, but d is not directly discoverable from e
+
+The relationship between them is:
+
+e * d = 1 (mod φ(n))
+
+d is the modular invers of e, making it hard to find e from d.
+
+To verify if its correct, B will do the following:
+
+Compute the verification step:
+M' = S^e mod n
+
+M' = 29^7 mod 55
+
+Using modular exponentiation:
+29^7 mod 55 = 9
+
+Were M' is the message gotten from unencripting.
+
+This way the compromissed computers can't falsify messages because all computers can compare the hash to a publicly available key wich cannot be falsified.
+
+So in order to safeguard most data, you must make so that:
+- Multiple random computers must be compromissed,
+- The best way to hack it is by cheer guessing,
+- All computers share data that helps in encription making so that every computer must be compromissed in order for it to fail,
+- Computers must know as little personal data about each other as possible,
+- Ever changing encryptiong Keys and private data,
+- Data redundency,
+- Resistance to a small number of compromissed nodes,
+- Nodes must not know were messages originated from,
+- Data is decentralized and low trust,
+- Encription is Quantum Resistant,
+- Each node only does and knows the bare minimum,
+- People should be rewarded and incentivised to act in a way that furter safeguards the data;
+The last behing more on the side of social engineering and design such as bitcoin proof of work model;
