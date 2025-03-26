@@ -147,3 +147,12 @@ To https://github.com/rafaelxky/p2pChatApp
    eef9b41..1a10945  main -> main
 [24/03/2025 20:57:53,77] Git push completed. 
 [24/03/2025 22:12:06,34] Running git add, commit, and push... 
+warning: in the working copy of 'AutoGit/git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[24/03/2025 22:12:06,91] Committing with message: "issue encountered while using netcat to listen to connection from the UDP, using localhost, port 9001. Wrote todo in notes with the error message and description." 
+[main e2e96be] issue encountered while using netcat to listen to connection from the UDP, using localhost, port 9001. Wrote todo in notes with the error message and description.
+ 3 files changed, 20 insertions(+), 5 deletions(-)
+[24/03/2025 22:12:08,49] Pushing to branch: "main" 
+To https://github.com/rafaelxky/p2pChatApp
+   1a10945..e2e96be  main -> main
+[24/03/2025 22:12:11,14] Git push completed. 
+[26/03/2025  0:26:51,93] Running git add, commit, and push... 
