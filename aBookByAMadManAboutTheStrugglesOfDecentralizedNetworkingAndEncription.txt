@@ -10,6 +10,7 @@ VPN
 P2p connection:
 UDP hole punching
 
+DNS system and IP discoverry:
 In order to implemente a dns system, each computer can have a registry of peers they know, it stores their adress and unique ID
 Then to encounter them you send data to computers you know and they will ask computers they know if it exists.
 If they find it,send you back its data and add it to your registree.
@@ -17,6 +18,7 @@ When you connect to a peer, the diferente entries will be joined.
 The repeated entries will be kept and a conter will be incremented.
 It will only pick the one with the biggest conter to avoid fraud.
 This works much like a router.
+This allows peers to discover each other.
 
 In order to hide ip adresses,
 we will encript our ip and send it to connections we know about,
@@ -110,3 +112,34 @@ So in order to safeguard most data, you must make so that:
 - Each node only does and knows the bare minimum,
 - People should be rewarded and incentivised to act in a way that furter safeguards the data;
 The last behing more on the side of social engineering and design such as bitcoin proof of work model;
+
+Similar apps:
+Tox
+Whisper
+Session
+
+Tech to use:
+WebRtc protocol for browser
+Libp2p network stack for p2p app 
+onion routing
+mix networks
+
+Objectives:
+Fully independent p2p messagig app
+fully secured
+fully safe
+multiple connection types
+microcotroller compatible (esp32, arduino etc)
+direct udp hole punching
+secure upd hole punching by using other peers as relays
+connection over tor
+distribute hash lookup table for DNS
+LAN communication
+API for addons and further development by community
+GUI
+Text based UI
+LightWeight Version
+Rewards for good community behaviour that increases security
+multiple OS compatible
+A way to save a message to be sent to someone if that person is offline
+

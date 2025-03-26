@@ -156,3 +156,17 @@ To https://github.com/rafaelxky/p2pChatApp
    1a10945..e2e96be  main -> main
 [24/03/2025 22:12:11,14] Git push completed. 
 [26/03/2025  0:26:51,93] Running git add, commit, and push... 
+warning: in the working copy of 'AutoGit/git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[26/03/2025  0:26:53,26] Committing with message: "I just wrote a huge message that got deleted and am verry upset. It was about the hardships of the program and how redundancy and using the peers devices would be the only way this could work. I would love such project to lead somewere as I am excited about it. I am enjoying the world of encryption and sybersecurity and I trully believe that due to the nature of this program, that it could live long past other inventions since independance is its objective. However I see that I must reapropriate or invent new methods and solutions to create this program since I dont velieve there are that many projects such as this one. I will keep on going :)" 
+[main c424770] I just wrote a huge message that got deleted and am verry upset. It was about the hardships of the program and how redundancy and using the peers devices would be the only way this could work. I would love such project to lead somewere as I am excited about it. I am enjoying the world of encryption and sybersecurity and I trully believe that due to the nature of this program, that it could live long past other inventions since independance is its objective. However I see that I must reapropriate or invent new methods and solutions to create this program since I dont velieve there are that many projects such as this one. I will keep on going :)
+ 8 files changed, 202 insertions(+)
+ create mode 100644 Program/src/io/sourceWare/Tests/ConsoleDisplayTest.java
+ create mode 100644 Program/src/io/sourceWare/program/client/view/consoleview/Displays/AbstractDisplay.java
+ create mode 100644 Program/src/io/sourceWare/program/client/view/consoleview/Displays/MainMenuDisplay.java
+ create mode 100644 Program/src/io/sourceWare/program/client/view/consoleview/Messages.java
+ create mode 100644 aBookByAMadManAboutTheStrugglesOfDecentralizedNetworkingAndEncription.txt
+[26/03/2025  0:26:54,16] Pushing to branch: "main" 
+To https://github.com/rafaelxky/p2pChatApp
+   e2e96be..c424770  main -> main
+[26/03/2025  0:26:59,84] Git push completed. 
+[26/03/2025  0:39:07,60] Running git add, commit, and push... 
