@@ -36,6 +36,11 @@ https://blog.torproject.org/tor-messenger-beta-chat-over-tor-easily/
 Ncat: Uma mensagem enviada num socket de datagrama era maior do que a memória intermÚdia de mensagens internas ou excedia algum outro limite da rede, ou a memória intermÚdia utilizada para receber um datagrama era menor do que o pr¾prio datagrama.
 Note: works fine within the program
 
+Issue:
+Decryption error
+solution:
+Ensuring that the key was a multiple of 16 by filling or trimming the byte array.
+
 //Usefull commands:
 @ Receive TCP packets with ncat
 - ncat -l 127.0.0.1 9001
