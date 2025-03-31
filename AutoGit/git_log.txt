@@ -170,3 +170,11 @@ To https://github.com/rafaelxky/p2pChatApp
    e2e96be..c424770  main -> main
 [26/03/2025  0:26:59,84] Git push completed. 
 [26/03/2025  0:39:07,60] Running git add, commit, and push... 
+warning: in the working copy of 'AutoGit/git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[26/03/2025  0:39:07,96] Committing with message: "update to notes" 
+[main e2d988d] update to notes
+ 2 files changed, 48 insertions(+), 1 deletion(-)
+[26/03/2025  0:39:08,43] Pushing to branch: "main" 
+To https://github.com/rafaelxky/p2pChatApp
+   c424770..e2d988d  main -> main
+[26/03/2025  0:39:11,60] Git push completed. 
