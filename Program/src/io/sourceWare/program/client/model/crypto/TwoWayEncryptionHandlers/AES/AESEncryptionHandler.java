@@ -1,20 +1,16 @@
-package io.sourceWare.program.client.model.crypto;
+package io.sourceWare.program.client.model.crypto.TwoWayEncryptionHandlers.AES;
 
-import javax.crypto.*;
+import io.sourceWare.program.client.model.crypto.TwoWayEncryptionHandlers.TwoWayEncryption;
+
+import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
-import java.security.InvalidKeyException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Base64;
 
-public class EncryptionHandler {
-    //public static final int SIZE = 16;
-    // handles everything related to encryption and description
-
-    /*public static String encrypt(String message, String key) throws Exception {
+public class AESEncryptionHandler implements TwoWayEncryption {
+    public static final int SIZE = 16;
+    public String encrypt(String message, String key) throws Exception {
 
         // create secret key from key
         byte[] keyBytes = Arrays.copyOf(key.getBytes(StandardCharsets.UTF_8), SIZE);
@@ -31,9 +27,9 @@ public class EncryptionHandler {
 
         // return encrypted message as Base64 encoded string
         return Base64.getEncoder().encodeToString(encryptedMessage);
-    }*/
+    }
 
-   /* public static String decrypt(String encryptedMessage, String key) throws Exception {
+    public String decrypt(String encryptedMessage, String key) throws Exception {
 
         // Create a secret key from key
         byte[] keyBytes = Arrays.copyOf(key.getBytes(StandardCharsets.UTF_8), SIZE);
@@ -51,23 +47,5 @@ public class EncryptionHandler {
         byte[] decryptedMsg = cipher.doFinal(decodedMsg);
 
         return new String(decryptedMsg);
-    }*/
-
-    // add a permanent encription that cant be decripted
-
-    /*public static String permanentEncryption(String input) throws NoSuchAlgorithmException {
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
-
-        byte[] hashByte = md.digest(input.getBytes(StandardCharsets.UTF_8));
-
-        StringBuilder hexString = new StringBuilder();
-        for (byte b : hashByte) {
-            hexString.append(String.format("%02x", b));
-        }
-
-        return hexString.toString();
-    }*/
-
-
-
+    }
 }
