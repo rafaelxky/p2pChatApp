@@ -8,12 +8,13 @@ import java.util.Arrays;
 import java.util.Base64;
 
 public class EncryptionHandler {
+    public static final int SIZE = 16;
     // handles everything related to encryption and description
 
     public static String encrypt(String message, String key) throws Exception {
 
         // create secret key from key
-        byte[] keyBytes = Arrays.copyOf(key.getBytes(StandardCharsets.UTF_8),16);
+        byte[] keyBytes = Arrays.copyOf(key.getBytes(StandardCharsets.UTF_8),SIZE);
         SecretKeySpec secretKey = new SecretKeySpec(keyBytes, "AES");
 
         // create cipher object
@@ -32,7 +33,7 @@ public class EncryptionHandler {
     public static String decrypt (String encryptedMessage, String key) throws Exception{
 
         // Create a secret key from key
-        byte[] keyBytes = Arrays.copyOf(key.getBytes(StandardCharsets.UTF_8),16);
+        byte[] keyBytes = Arrays.copyOf(key.getBytes(StandardCharsets.UTF_8),SIZE);
         SecretKeySpec secretKey = new SecretKeySpec(keyBytes, "AES");
         // Create cipher object
         Cipher cipher = Cipher.getInstance("AES");
