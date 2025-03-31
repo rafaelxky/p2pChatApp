@@ -1,17 +1,20 @@
 package io.sourceWare.program.client.model.crypto;
 import javax.crypto.*;
 import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.Base64;
 
 public class EncryptionHandler {
     // handles everything related to encryption and description
 
-    public static String encrypt(String key, String message) throws Exception {
+    public static String encrypt(String message, String key) throws Exception {
 
         // create secret key from key
-        SecretKeySpec secretKey = new SecretKeySpec(key.getBytes(), "AES");
+        byte[] keyBytes = Arrays.copyOf(key.getBytes(StandardCharsets.UTF_8),16);
+        SecretKeySpec secretKey = new SecretKeySpec(keyBytes, "AES");
 
         // create cipher object
         Cipher cipher = Cipher.getInstance("AES");
@@ -27,9 +30,10 @@ public class EncryptionHandler {
     }
 
     public static String decrypt (String encryptedMessage, String key) throws Exception{
-        // Create a secret key from key
-        SecretKeySpec secretKey = new SecretKeySpec(key.getBytes(), "AES");
 
+        // Create a secret key from key
+        byte[] keyBytes = Arrays.copyOf(key.getBytes(StandardCharsets.UTF_8),16);
+        SecretKeySpec secretKey = new SecretKeySpec(keyBytes, "AES");
         // Create cipher object
         Cipher cipher = Cipher.getInstance("AES");
 
@@ -45,5 +49,11 @@ public class EncryptionHandler {
         return new String(decryptedMsg);
     }
 
+    // add a permanent encription that cant be decripted
+
+    public static String permanentEncryption(){
+        System.out.println("Unimplemented feature - permanentEncryption");
+       return null;
+    }
     
 }
