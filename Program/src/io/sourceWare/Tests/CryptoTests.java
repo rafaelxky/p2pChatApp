@@ -22,6 +22,9 @@ public class CryptoTests {
         System.out.println("Decrypted message: " + decryptionTest(eh));
         System.out.println();
 
+        System.out.println("Encrypt and decrypt test: " + (encryptionAndDecryptionTest(eh).equals("Hello World")? "success" : "failed"));
+        System.out.println();
+
 
         System.out.println(permanentEncryptionTestNoSalt(peh).equals("a591a6d40bf420404a011733cfb7b190d62c65bf0bcda32b57b277d9ad9f146e") ? " - permanentEncryptionTestNoSalt, success" : " - permanentEncryptionTestNoSalt, failed");
         System.out.println(permanentEncryptionTestNoSalt(peh));
@@ -37,11 +40,15 @@ public class CryptoTests {
         System.out.println(addSaltTest(sh));
         System.out.println();
 
-
-        System.out.println("Generated salt: " + generateSalt(sh));
+        System.out.println(" - Generated salt: " + generateSalt(sh));
         System.out.println();
 
+        System.out.println(" - Starting edge case tests - ");
+        System.out.println();
 
+        System.out.println(" - null string encription test: " + (emptyStringEncryptionTest(eh).equals("AUPbY+5msM3/n2mRdoAVHg==")? "success" : "failed") + " - " + emptyStringEncryptionTest(eh));
+
+        System.out.println(nullStringEncryptionTest(eh));
 
     }
 
@@ -87,6 +94,31 @@ public class CryptoTests {
 
     public static String generateSalt(SaltHandler salt){
         return salt.generateSalt();
+    }
+
+    public static String nullStringEncryptionTest(TwoWayEncryption twe){
+        try {
+            return twe.encrypt(null, null);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static String emptyStringEncryptionTest(TwoWayEncryption twe){
+        try {
+            return twe.encrypt("", "");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static String encryptionAndDecryptionTest(TwoWayEncryption twe){
+        try {
+            return twe.decrypt(twe.encrypt("Hello World", "key"), "key");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
+        }
     }
 
 }
