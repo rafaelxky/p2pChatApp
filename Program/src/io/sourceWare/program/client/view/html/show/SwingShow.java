@@ -1,22 +1,20 @@
-package io.sourceWare.program.client.view;
+package io.sourceWare.program.client.view.html.show;
 
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 
-public class HtmlView {
-    public static void main(String[] args) {
-        show();
-    }
+public class SwingShow implements Show{
 
-    public static void show() {
+    public void show() {
         JFrame frame = new JFrame("p2pChatApp");
         JEditorPane editorPane = new JEditorPane();
         editorPane.setEditable(false);
         editorPane.setContentType("text/html");
 
         try {
-            URL url = HtmlView.class.getResource("/io/sourceWare/program/client/view/html/index.html");
+            URL url = SwingShow.class.getResource("/io/sourceWare/program/client/view/html/index.html");
+
 
             if (url == null) {
                 throw new IOException("File not found in classpath: /io/sourceWare/program/client/view/html/index.html");

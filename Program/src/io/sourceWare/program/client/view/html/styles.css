@@ -1,7 +1,4 @@
-.debug{
-    background-color: purple;
-}
-
-.wtext {
-    color: white;
+.debug.wtext {
+    color: yellow !important;
+    font-weight: bold;
 }
