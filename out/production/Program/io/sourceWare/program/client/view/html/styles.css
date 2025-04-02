@@ -1,4 +1,12 @@
-.debug.wtext {
-    color: yellow !important;
-    font-weight: bold;
+
+.debug{
+    background-color: purple;
+}
+.wtext{
+    color: white;
+}
+
+.fullSize{
+    width: 100vw;
+    height: 100vh;
 }

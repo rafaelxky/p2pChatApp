@@ -15,7 +15,7 @@
         <maven.compiler.target>17</maven.compiler.target>
 
         <!-- JavaFX version -->
-        <javafx.version>17</javafx.version> <!-- Use a version compatible with JDK 17 -->
+        <javafx.version>17.0.2</javafx.version> <!-- Make sure the JavaFX version is compatible with JDK 17 -->
     </properties>
 
     <!-- Dependencies -->
@@ -60,9 +60,9 @@
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.8</version>
+                <version>0.0.9</version> <!-- Updated version of the plugin -->
                 <configuration>
-                    <mainClass>io/sourceWare/program/client/view/html/show/JavaFXShow.java</mainClass>
+                    <mainClass>com.yourcompany.YourMainClass</mainClass> <!-- Update this to the fully qualified main class -->
                 </configuration>
             </plugin>
         </plugins>
@@ -75,5 +75,4 @@
             <url>https://maven.openjfx.io</url>
         </repository>
     </repositories>
-
 </project>
