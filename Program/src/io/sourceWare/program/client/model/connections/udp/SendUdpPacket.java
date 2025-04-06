@@ -1,4 +1,4 @@
-package io.sourceWare.program.client.model.connections.p2p;
+package io.sourceWare.program.client.model.connections.udp;
 import io.sourceWare.program.client.model.connections.ConnectionData;
 
 import java.io.IOException;

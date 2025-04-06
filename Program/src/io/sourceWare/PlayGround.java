@@ -1,8 +1,6 @@
 package io.sourceWare;
 
-import io.sourceWare.program.client.model.connections.p2p.ReceiveUdpPacket;
-import io.sourceWare.program.client.model.connections.p2p.SendUdpPacket;
-import io.sourceWare.program.client.view.Popus;
+import io.sourceWare.program.client.model.connections.udp.SendUdpPacket;
 
 import java.io.IOException;
 
