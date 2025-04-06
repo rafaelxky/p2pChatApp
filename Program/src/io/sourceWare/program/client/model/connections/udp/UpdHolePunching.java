@@ -4,8 +4,15 @@ import io.sourceWare.program.client.model.connections.ConnectionData;
 import io.sourceWare.program.client.view.consoleview.ConsoleInputHandler;
 import io.sourceWare.program.interfaces.Input;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class UpdHolePunching {
     public static String message = "Hello";
+    public static ExecutorService threadPool = Executors.newFixedThreadPool(4);
+    public static Thread send = new Thread(new SendUdpPacket(message));
+    public static Thread receive = new Thread(new ReceiveUdpPacket());
+
 
     public static void startUdpPunching(){
         // attempts to punch a UDP hole by sending data every X seconds and listening for connections
@@ -15,13 +22,11 @@ public class UpdHolePunching {
         // if stop typed, stop sending
         // if receive data, stop sending
 
-        Thread receive = new Thread(new ReceiveUdpPacket());
         receive.start();
 
         // while true
         while (true){
             // send default message
-            Thread send = new Thread(new SendUdpPacket(message));
             send.start();
             try {
                 Thread.sleep(10);
@@ -31,7 +36,6 @@ public class UpdHolePunching {
             // check if received udp
             checkUdpPacket();
         }
-
     }
 
     public static void keepUdpHoleAlive(){
