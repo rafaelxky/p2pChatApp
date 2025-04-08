@@ -13,11 +13,11 @@ public class SwingShow implements Show{
         editorPane.setContentType("text/html");
 
         try {
-            URL url = SwingShow.class.getResource("/io/sourceWare/program/client/view/html/index.html");
+            URL url = SwingShow.class.getResource("/io/sourceWare/program/client/view/html/html/index.html");
 
 
             if (url == null) {
-                throw new IOException("File not found in classpath: /io/sourceWare/program/client/view/html/index.html");
+                throw new IOException("File not found in classpath: /io/sourceWare/program/client/view/html/html/index.html");
             }
 
             editorPane.setPage(url);
