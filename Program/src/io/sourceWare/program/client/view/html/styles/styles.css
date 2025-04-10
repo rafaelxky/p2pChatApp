@@ -1,7 +1,13 @@
 :root{
     --sidebar-width:7vh;
-    --side-bar-button-size:calc(var(--sidebar-width) - 5vh);
+    
+    --side-bar-button-width:calc(var(--sidebar-width) - 2vh);
+
+    --side-bar-button-height:calc(var(--sidebar-width) - 2vh);
+
     --side-bar-button-text-size:calc(var(--sidebar-width) - 5vh); 
+
+    --side-bar-button-padding: 20%;
 }
 
 body{
@@ -14,17 +20,6 @@ body{
     background-color: var(--background-color);
 }
 
-.debug{
-    background-color: var(--debug);
-}
-
-.debug1{
-    background-color: var(--debug1);
-}
-
-.debug2{
-    background-color: var(--debug2);
-}
 
 .right_bar{
     container: flex;
@@ -54,14 +49,14 @@ body{
 
 .button_sidebar_right {
     background-color: var(--color-sidebar-button);
-    width: var(--sidebar-width);
-    height: var(--side-bar-button-size);
+    width: var(--side-bar-button-width);
+    height: var(--side-bar-button-height);
     color: var(--color-text);
     z-index: 1;
     margin-top: 20%;
     margin-bottom: 20%;
-    padding-top: 50%;
-    padding-bottom: 50%;
+    padding-top: var(--side-bar-button-padding);
+    padding-bottom: var(--side-bar-button-padding);
     border-radius: 10%;
     font-size: var(--side-bar-button-text-size);
 }
@@ -69,7 +64,6 @@ body{
 .sidebar{
     background-color: var(--color-primary);
 }
-
 
 .menu{
     z-index: 1;
@@ -89,5 +83,23 @@ body{
     display: flex;
     text-align: center;
     justify-content: center;
+    align-items: center;
+}
+
+.debug{
+    background-color: var(--debug);
+}
+
+.debug1{
+    background-color: var(--debug1);
+}
+
+.debug2{
+    background-color: var(--debug2);
+}
+
+.column{
+    display: flex;
+    flex-direction: column;    
     align-items: center;
 }
