@@ -2,13 +2,13 @@
 /*
     --boxShadow: black;
 --buttonBg: white;
---debug:purple;
---debug1:rgba(84, 0, 94, 0.942);
---debug2: rgba(109, 39, 117, 0.942);
 --background:  rgba(109, 39, 117, 0.942);
 --sidebar_button_line:  rgba(201, 30, 110, 0.455);
 --sidebar_button_bg: wheat; */
 
+--debug:purple;
+--debug1:rgba(84, 0, 94, 0.942);
+--debug2: rgba(109, 39, 117, 0.942);
 
     --background-color: #f3e5f5; /* Light purple background */
     --color-text:: #4a148c;       /* Dark purple text */
