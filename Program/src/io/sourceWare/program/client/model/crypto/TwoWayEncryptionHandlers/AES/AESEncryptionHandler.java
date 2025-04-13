@@ -5,12 +5,14 @@ import io.sourceWare.program.client.model.crypto.TwoWayEncryptionHandlers.TwoWay
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Base64;
 
 public class AESEncryptionHandler implements TwoWayEncryption {
     public static final int SIZE = 16;
-    public String encrypt(String message, String key) throws Exception {
+    public String encrypt(String message, String key) {
+        try{
 
         // create secret key from key
         byte[] keyBytes = Arrays.copyOf(key.getBytes(StandardCharsets.UTF_8), SIZE);
@@ -27,9 +29,14 @@ public class AESEncryptionHandler implements TwoWayEncryption {
 
         // return encrypted message as Base64 encoded string
         return Base64.getEncoder().encodeToString(encryptedMessage);
+
+        } catch (Exception  e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public String decrypt(String encryptedMessage, String key) throws Exception {
+    public String decrypt(String encryptedMessage, String key) {
+        try {
 
         // Create a secret key from key
         byte[] keyBytes = Arrays.copyOf(key.getBytes(StandardCharsets.UTF_8), SIZE);
@@ -47,5 +54,9 @@ public class AESEncryptionHandler implements TwoWayEncryption {
         byte[] decryptedMsg = cipher.doFinal(decodedMsg);
 
         return new String(decryptedMsg);
+
+        } catch (Exception  e) {
+            throw new RuntimeException(e);
+        }
     }
 }
