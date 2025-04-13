@@ -1,12 +1,14 @@
-package io.sourceWare.program.client.model.crypto.keyPairEncription.RSA;
+package io.sourceWare.program.client.model.crypto.keyPairEncryptionHandlers.RSA;
 
-import io.sourceWare.program.client.model.crypto.keyPairEncription.KeyPairEncription;
+import io.sourceWare.program.client.model.crypto.keyPairEncryptionHandlers.KeyPairEncryption;
 
 import javax.crypto.Cipher;
 import java.security.*;
+import java.security.interfaces.RSAPrivateKey;
+import java.security.interfaces.RSAPublicKey;
 import java.util.Base64;
 
-public class RsaEncription extends KeyPairEncription {
+public class RsaEncryption extends KeyPairEncryption {
 
     @Override
     public void generateKeyPair(){
@@ -47,15 +49,13 @@ public class RsaEncription extends KeyPairEncription {
         return null;
     }
 
-    @Override
-    protected PublicKey getPublicKey() {
-        return super.keyPair.getPublic();
+    public void setPrivateKey(RSAPrivateKey privateKey){
+        super.keyPair = new KeyPair(super.keyPair.getPublic(), privateKey);
     }
 
-    @Override
-    protected PrivateKey getPrivateKey() {
-        return super.keyPair.getPrivate();
-    }
 
+    public void setPublicKey(RSAPublicKey publicKey){
+        super.keyPair = new KeyPair(publicKey, super.keyPair.getPrivate());
+    }
 
 }

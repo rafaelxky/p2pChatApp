@@ -1,16 +1,16 @@
 package io.sourceWare.Tests;
 
-import io.sourceWare.program.client.model.crypto.PermanentEncriptionHandlers.PermanentEncryption;
-import io.sourceWare.program.client.model.crypto.PermanentEncriptionHandlers.SHA_256.Sha256EncryptionHandler;
-import io.sourceWare.program.client.model.crypto.SaltHandler.SaltHandler;
-import io.sourceWare.program.client.model.crypto.TwoWayEncryptionHandlers.AES.AESEncryptionHandler;
-import io.sourceWare.program.client.model.crypto.TwoWayEncryptionHandlers.TwoWayEncryption;
+import io.sourceWare.program.client.model.crypto.permanentEncryptionHandlers.PermanentEncryption;
+import io.sourceWare.program.client.model.crypto.permanentEncryptionHandlers.SHA_256.Sha256EncryptionHandler;
+import io.sourceWare.program.client.model.crypto.saltHandler.SaltHandler;
+import io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers.AES.AESEncryptionHandler;
+import io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers.SymmetricEncryptionAlgorythm;
 
 import java.security.NoSuchAlgorithmException;
 
 public class CryptoTests {
     public static void main(String[] args) {
-        TwoWayEncryption eh = new AESEncryptionHandler();
+        SymmetricEncryptionAlgorythm eh = new AESEncryptionHandler();
         PermanentEncryption peh = new Sha256EncryptionHandler();
         SaltHandler sh = new SaltHandler();
 
@@ -54,7 +54,7 @@ public class CryptoTests {
 
 
 
-    public static String encryptionTest(TwoWayEncryption encryptionHandler){
+    public static String encryptionTest(SymmetricEncryptionAlgorythm encryptionHandler){
         try {
             return encryptionHandler.encrypt("Hello World","Super secret key");
         } catch (Exception e) {
@@ -62,7 +62,7 @@ public class CryptoTests {
         }
     }
 
-    public static String decryptionTest(TwoWayEncryption encryptionHandler){
+    public static String decryptionTest(SymmetricEncryptionAlgorythm encryptionHandler){
         try {
             return encryptionHandler.decrypt("zoVIE66EIk8op3GyzV2/Cw==","Super secret key");
         } catch (Exception e) {
@@ -96,7 +96,7 @@ public class CryptoTests {
         return salt.generateSalt();
     }
 
-    public static String nullStringEncryptionTest(TwoWayEncryption twe){
+    public static String nullStringEncryptionTest(SymmetricEncryptionAlgorythm twe){
         try {
             return twe.encrypt(null, null);
         } catch (Exception e) {
@@ -104,7 +104,7 @@ public class CryptoTests {
         }
     }
 
-    public static String emptyStringEncryptionTest(TwoWayEncryption twe){
+    public static String emptyStringEncryptionTest(SymmetricEncryptionAlgorythm twe){
         try {
             return twe.encrypt("", "");
         } catch (Exception e) {
@@ -112,7 +112,7 @@ public class CryptoTests {
         }
     }
 
-    public static String encryptionAndDecryptionTest(TwoWayEncryption twe){
+    public static String encryptionAndDecryptionTest(SymmetricEncryptionAlgorythm twe){
         try {
             return twe.decrypt(twe.encrypt("Hello World", "key"), "key");
         } catch (Exception e) {

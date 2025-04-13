@@ -1,6 +1,6 @@
-package io.sourceWare.program.client.model.crypto.PermanentEncriptionHandlers.SHA_256;
+package io.sourceWare.program.client.model.crypto.permanentEncryptionHandlers.SHA_256;
 
-import io.sourceWare.program.client.model.crypto.PermanentEncriptionHandlers.PermanentEncryption;
+import io.sourceWare.program.client.model.crypto.permanentEncryptionHandlers.PermanentEncryption;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;

@@ -1,11 +1,13 @@
-package io.sourceWare.program.client.model.crypto.signMessage.RsaSign;
+package io.sourceWare.program.client.model.crypto.signMessageHandlers.RsaSign;
+
+import io.sourceWare.program.client.model.crypto.signMessageHandlers.MessageSigner;
 
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.Signature;
 import java.util.Base64;
 
-public class RsaSign {
+public class RsaSign implements MessageSigner{
 
     public String signMessage(String message, PrivateKey privateKey){
         try {

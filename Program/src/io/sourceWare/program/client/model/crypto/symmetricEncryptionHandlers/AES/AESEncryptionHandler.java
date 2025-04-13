@@ -1,28 +1,29 @@
-package io.sourceWare.program.client.model.crypto.TwoWayEncryptionHandlers.AES;
+package io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers.AES;
 
-import io.sourceWare.program.client.model.crypto.TwoWayEncryptionHandlers.TwoWayEncryption;
+import io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers.SymmetricEncryptionAlgorythm;
 
 import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
-import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Base64;
 
-public class AESEncryptionHandler implements TwoWayEncryption {
+public class AESEncryptionHandler extends SymmetricEncryptionAlgorythm {
     public static final int SIZE = 16;
-    public String encrypt(String message, String key) {
+
+    public String encrypt(String message, SecretKey key) {
         try{
 
         // create secret key from key
-        byte[] keyBytes = Arrays.copyOf(key.getBytes(StandardCharsets.UTF_8), SIZE);
-        SecretKeySpec secretKey = new SecretKeySpec(keyBytes, "AES");
+        //byte[] keyBytes = Arrays.copyOf(key.getBytes(StandardCharsets.UTF_8), SIZE);
+        //SecretKeySpec secretKey = new SecretKeySpec(keyBytes, "AES");
 
         // create cipher object
         Cipher cipher = Cipher.getInstance("AES");
 
         // start cipher for encryption
-        cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+        cipher.init(Cipher.ENCRYPT_MODE, key);
 
         // encrypt message
         byte[] encryptedMessage = cipher.doFinal(message.getBytes());
@@ -35,17 +36,17 @@ public class AESEncryptionHandler implements TwoWayEncryption {
         }
     }
 
-    public String decrypt(String encryptedMessage, String key) {
+    public String decrypt(String encryptedMessage, SecretKey key) {
         try {
 
         // Create a secret key from key
-        byte[] keyBytes = Arrays.copyOf(key.getBytes(StandardCharsets.UTF_8), SIZE);
-        SecretKeySpec secretKey = new SecretKeySpec(keyBytes, "AES");
+        //byte[] keyBytes = Arrays.copyOf(key.getBytes(StandardCharsets.UTF_8), SIZE);
+        //SecretKeySpec secretKey = new SecretKeySpec(keyBytes, "AES");
         // Create cipher object
         Cipher cipher = Cipher.getInstance("AES");
 
         // init cypher
-        cipher.init(Cipher.DECRYPT_MODE, secretKey);
+        cipher.init(Cipher.DECRYPT_MODE, key);
 
         // Decode Base64 string
         byte[] decodedMsg = Base64.getDecoder().decode(encryptedMessage);
