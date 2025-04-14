@@ -66,6 +66,8 @@ public class DhKeyExchanger implements KeyExchanger {
 
     public void generateSecretKey(String peerBase64PublicKey){
         try {
+            // todo: check this for redundancy (KeyHandler.java)
+            // todo: separate encryption from key exchange
         byte[]  peerBytes = Base64.getDecoder().decode(peerBase64PublicKey);
         KeyFactory keyFactory = KeyFactory.getInstance("DH");
         PublicKey peerPublicKey = keyFactory.generatePublic(new X509EncodedKeySpec(peerBytes));

@@ -10,8 +10,6 @@ import io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers.AES
 import io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers.SymmetricEncryptionAlgorythm;
 
 import javax.crypto.SecretKey;
-import java.security.Key;
-import java.security.NoSuchAlgorithmException;
 
 public class CryptoTests {
     public static void main(String[] args) {
@@ -81,7 +79,7 @@ public class CryptoTests {
 
     private static String keyPairEncriptionTest(KeyPairEncryption kpe, String key, String message) {
         // todo: fix, convert string to RSAPublicKey
-        kpe.setPublicKey(KeyHandler.StringToSecretKey(key));
+        kpe.setPublicKey(KeyHandler.stringToSecretKey(key));
         kpe.encrypt(message);
     }
 
