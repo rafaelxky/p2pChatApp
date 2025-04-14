@@ -1,6 +1,7 @@
 package io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers.AES;
 
 import io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers.SymmetricEncryptionAlgorythm;
+import io.sourceWare.program.client.util.Validator;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
@@ -12,8 +13,7 @@ import java.util.Base64;
 public class AESEncryptionHandler extends SymmetricEncryptionAlgorythm {
     @Override
     public String encrypt(String message, SecretKey key) {
-        if (message.isEmpty() || key.isDestroyed()){
-            System.out.println("Error, trying to encrypt an empty " + (message.isEmpty() ? "message" : "" ) + " " + (key.isDestroyed() ? "key" : ""));
+        if (Validator.areInputsNull(message, key)){
             return null;
         }
         try{
@@ -41,8 +41,7 @@ public class AESEncryptionHandler extends SymmetricEncryptionAlgorythm {
 
    @Override
     public String decrypt(String encryptedMessage, SecretKey key) {
-       if (encryptedMessage.isEmpty() || key.isDestroyed()){
-           System.out.println("Error, trying to encript an empty " + (encryptedMessage.isEmpty() ? "message" : "" ) + " " + (key.isDestroyed() ? "key" : ""));
+       if (Validator.areInputsNull(encryptedMessage, key)){
            return null;
        }
         try {
