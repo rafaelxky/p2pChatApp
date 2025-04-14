@@ -10,9 +10,12 @@ import java.util.Arrays;
 import java.util.Base64;
 
 public class AESEncryptionHandler extends SymmetricEncryptionAlgorythm {
-    public static final int SIZE = 16;
-
+    @Override
     public String encrypt(String message, SecretKey key) {
+        if (message.isEmpty() || key.isDestroyed()){
+            System.out.println("Error, trying to encrypt an empty " + (message.isEmpty() ? "message" : "" ) + " " + (key.isDestroyed() ? "key" : ""));
+            return null;
+        }
         try{
 
         // create secret key from key
@@ -36,7 +39,12 @@ public class AESEncryptionHandler extends SymmetricEncryptionAlgorythm {
         }
     }
 
+   @Override
     public String decrypt(String encryptedMessage, SecretKey key) {
+       if (encryptedMessage.isEmpty() || key.isDestroyed()){
+           System.out.println("Error, trying to encript an empty " + (encryptedMessage.isEmpty() ? "message" : "" ) + " " + (key.isDestroyed() ? "key" : ""));
+           return null;
+       }
         try {
 
         // Create a secret key from key
@@ -60,4 +68,5 @@ public class AESEncryptionHandler extends SymmetricEncryptionAlgorythm {
             throw new RuntimeException(e);
         }
     }
+
 }

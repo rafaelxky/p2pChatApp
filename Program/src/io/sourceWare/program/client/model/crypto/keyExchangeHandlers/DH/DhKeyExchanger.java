@@ -54,12 +54,14 @@ public class DhKeyExchanger implements KeyExchanger {
     // encryption algo should be symmetric like AES
     public String encryptMessage(String plainText, SecretKey sharedKey, IvParameterSpec iv, SymmetricEncryptionAlgorythm algorithm){
        // todo: implement the option to encrypt with iv
-        return algorithm.encrypt(plainText,sharedKey,iv);
+        // return algorithm.encrypt(plainText,sharedKey,iv);
+        return null;
     }
 
     public String decryptMessage(String encriptedText, SecretKey sharedKey, IvParameterSpec iv, SymmetricEncryptionAlgorythm algorithm){
         // todo: same here but for decrypt
-        return algorithm.decrypt(encriptedText,sharedKey, iv);
+        //return algorithm.decrypt(encriptedText,sharedKey, iv);
+        return null;
     }
 
     public void generateSecretKey(String peerBase64PublicKey){

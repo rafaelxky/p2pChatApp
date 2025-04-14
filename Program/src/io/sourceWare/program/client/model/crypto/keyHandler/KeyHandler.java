@@ -1,14 +1,19 @@
 package io.sourceWare.program.client.model.crypto.keyHandler;
 
+import io.sourceWare.program.client.Data;
+
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.Base64;
 
-public class keyGenerator {
+public class KeyHandler {
 
     public static SecretKey StringToSecretKey(String keyString){
-        byte[] keyBytes = keyString.getBytes();
-        return new SecretKeySpec(keyBytes, 0, 16, "AES");
+        //byte[] keyBytes = keyString.getBytes();
+        byte[] keyBytes = Arrays.copyOf(keyString.getBytes(StandardCharsets.UTF_8), Data.SIZE);
+        return new SecretKeySpec(keyBytes, "AES");
     }
 
     public static SecretKey BytesToSecretKey(byte[] keyBytes){

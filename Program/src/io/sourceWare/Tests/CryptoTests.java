@@ -1,11 +1,14 @@
 package io.sourceWare.Tests;
 
+import io.sourceWare.program.client.model.crypto.keyHandler.KeyHandler;
 import io.sourceWare.program.client.model.crypto.permanentEncryptionHandlers.PermanentEncryption;
 import io.sourceWare.program.client.model.crypto.permanentEncryptionHandlers.SHA_256.Sha256EncryptionHandler;
 import io.sourceWare.program.client.model.crypto.saltHandler.SaltHandler;
 import io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers.AES.AESEncryptionHandler;
 import io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers.SymmetricEncryptionAlgorythm;
 
+import javax.crypto.SecretKey;
+import java.security.Key;
 import java.security.NoSuchAlgorithmException;
 
 public class CryptoTests {
@@ -46,7 +49,7 @@ public class CryptoTests {
         System.out.println(" - \uD83D\uDD27 Starting edge case tests \uD83D\uDD27 - ");
         System.out.println();
 
-        System.out.println(" - null string encryption test \uD83D\uDEAB\uFE0F\uD83D\uDD11: " + (emptyStringEncryptionTest(eh).equals("AUPbY+5msM3/n2mRdoAVHg==")? "success ✅" : "failed ❌") + " - " + emptyStringEncryptionTest(eh));
+        System.out.println(" - null string encryption test \uD83D\uDEAB\uFE0F\uD83D\uDD11: " + (emptyStringEncryptionTest(eh).isEmpty() ? "success ✅" : "failed ❌"));
 
         System.out.println(nullStringEncryptionTest(eh));
 
@@ -71,21 +74,11 @@ public class CryptoTests {
     }
 
     public static String permanentEncryptionTestNoSalt(PermanentEncryption permanentEncryption){
-        try {
-            return permanentEncryption.encrypt("Hello World");
-        } catch (NoSuchAlgorithmException e) {
-            System.out.println(e.getMessage());
-        }
-        return null;
+        return permanentEncryption.encrypt("Hello World");
     }
 
     public static String permanentEncryptionTestStaticSalt(PermanentEncryption permanentEncryption, SaltHandler salt){
-        try {
-            return permanentEncryption.encrypt(salt.addSalt("Hello World", "salt"));
-        } catch (NoSuchAlgorithmException e) {
-            System.out.println(e.getMessage());
-        }
-        return null;
+        return permanentEncryption.encrypt(salt.addSalt("Hello World", "salt"));
     }
 
     public static String addSaltTest(SaltHandler salt){
@@ -98,7 +91,7 @@ public class CryptoTests {
 
     public static String nullStringEncryptionTest(SymmetricEncryptionAlgorythm twe){
         try {
-            return twe.encrypt(null, null);
+            return twe.encrypt((String) null, (SecretKey) null);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
