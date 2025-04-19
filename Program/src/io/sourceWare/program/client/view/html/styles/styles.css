@@ -10,12 +10,15 @@
     --side-bar-button-padding: 20%;
 
     --menu-button-size: 8vh;
+
+    --ease: 0.2s;
 }
 
 body{
     margin: 0;
     padding: 0;
     font-size: 40px;
+    background-color: rgb(236, 148, 236);
 }
 
 .bg{
@@ -50,7 +53,6 @@ body{
 }
 
 .button_sidebar_right {
-    background-color: var(--color-sidebar-button);
     width: var(--side-bar-button-width);
     height: var(--side-bar-button-height);
     color: var(--color-text);
@@ -61,6 +63,10 @@ body{
     padding-bottom: var(--side-bar-button-padding);
     border-radius: 10%;
     font-size: var(--side-bar-button-text-size);
+}
+
+.btn_color{
+    background-color: var(--color-sidebar-button);
 }
 
 .sidebar{
@@ -75,10 +81,15 @@ body{
     padding: 1vw;
 }
 
+.button_hover{
+    transition: box-shadow var(--ease) ease, color var(--ease) ease;
+}
+
 .button_hover:hover{
     color: var(--color-light);
     box-shadow: 0px 0px 15px var(--box-shadow-color);
     background-color: var(--color-primary);
+    cursor: pointer;
 }
 
 
@@ -113,4 +124,48 @@ body{
 
 .bold{
     font-weight:bold;
+}
+
+.menu_btn{
+    transition: box-shadow var(--ease) ease;
+    aspect-ratio: 1;
+    font-size: 30%;
+}
+
+.menu_btn:hover{
+    box-shadow: 0px 0px 6px black;
+    cursor: pointer;
+}
+
+
+
+.contact_div{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+    width: 80vw;
+    height: 10%;
+    margin: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
+    font-size: 50%;
+    gap: 1%;
+    border-radius: 10px;
+}
+
+.contact_img{
+    background-color: rgb(195, 147, 180);
+    border-radius: 50%;
+    height: 70%;
+    aspect-ratio: 1;  
+    align-content: center;
+    text-align:center;
+}
+
+.contact_info_div{
+    height: 60%;
+    display: flex;
+    align-items: center;
+    width: 100%;
 }
