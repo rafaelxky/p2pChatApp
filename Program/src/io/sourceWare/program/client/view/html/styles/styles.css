@@ -53,6 +53,7 @@ body{
 }
 
 .button_sidebar_right {
+    aspect-ratio: 1;
     width: var(--side-bar-button-width);
     height: var(--side-bar-button-height);
     color: var(--color-text);
@@ -129,7 +130,7 @@ body{
 .menu_btn{
     transition: box-shadow var(--ease) ease;
     aspect-ratio: 1;
-    font-size: 30%;
+    font-size: 60%;
 }
 
 .menu_btn:hover{
@@ -168,4 +169,9 @@ body{
     display: flex;
     align-items: center;
     width: 100%;
+}
+
+.contacts_container_div{
+    display: flex;
+    flex-direction: column;
 }

@@ -37,13 +37,59 @@ function createElemObj(){
   }
 }
 
-function populateMainDiv(arr){
+function createContact(){
+  return{
+    description: undefined,
+    img: undefined,
+    contact: undefined,
+
+    withImage: function(imgUrl){
+      this.img = imgUrl;
+      return this;
+    },
+    whithDescription: function(desc){
+      this.description = desc;
+      return this;
+    },
+    withContact: function(info){
+      this.contact = info;
+      return this;
+    },
+  }
+}
+
+function populateContacts(arr){
   arr.forEach((elem, id) => {
     let contact = document.createElement("div");
-    document.getElementById("main_div").appendChild()
+    contact.classList.add("contact_div", "debug"); 
+
+    let contact_img = document.createElement("div")
+    contact_img.classList.add("contact_img");
+
+    let contact_info = document.createElement("div");
+    contact_info.classList.add("debug1" + "contact_info_div");
+
+    if (elem.description){
+      contact_info.innerText = elem.description; 
+    }
+    if (elem.img){
+      contact_img.src = elem.img;
+    }
+    if (elem.contact){
+
+    }
+
+    contact.appendChild(contact_img);
+    contact.appendChild(contact_info);
+    document.getElementById("main_div").appendChild(contact);
   });
 }
+
+
 
 let myArray = [createElemObj().withText(1),createElemObj().withText(2)];
 addOptionsBar(myArray, "left_bar");
 addOptionsBar(myArray, "right_bar");
+
+let contactsArr = [createContact().whithDescription("Contact 1"), createContact().whithDescription("Contact 2")];
+populateContacts(contactsArr);
