@@ -1,4 +1,5 @@
 programming language - java 17
 IDE - intelij community edition
 
-test tools: netcat, wireshark
+test tools: netcat, wireshark, postman
+frontend: html, css, js, electron
