@@ -1,17 +1,17 @@
 :root{
-    --sidebar-width:8vh;
+    --sidebar-width:9vh;
     
-    --side-bar-button-width:calc(var(--sidebar-width) - 2vh);
+    --side-bar-button-width:calc(var(--sidebar-width) - 3vh);
 
-    --side-bar-button-height:calc(var(--sidebar-width) - 2vh);
+    --side-bar-button-height:calc(var(--sidebar-width) - 3vh);
 
-    --side-bar-button-text-size:calc(var(--sidebar-width) - 5vh); 
+    --side-bar-button-text-size:calc(var(--sidebar-width) - 6vh); 
 
     --side-bar-button-padding: 20%;
 
     --menu-button-size: 8vh;
 
-    --ease: 0.15s;
+    --ease: .2s;
 
     --menu-button-border-radius: 4px;
 }
@@ -22,6 +22,10 @@ body{
     overflow-x: hidden;
     font-size: 40px;
     background-color: rgb(236, 148, 236);
+}
+
+.sidebar_shadow{
+    box-shadow: 0px 0px 17px rgba(0, 0, 0, 0.733);
 }
 
 .bg{
@@ -77,6 +81,7 @@ body{
     background-color: var(--color-primary);
 }
 
+
 .menu{
     z-index: 1;
     height: var(--menu-button-size);
@@ -87,6 +92,7 @@ body{
 .button_hover{
     transition: box-shadow var(--ease) ease, color var(--ease) ease;
 }
+
 
 .button_hover:hover{
     color: var(--color-light);
@@ -137,14 +143,17 @@ body{
 
     border-top-left-radius: var(--menu-button-border-radius);  
     border-bottom-left-radius: var(--menu-button-border-radius); 
-    transition: box-shadow var(--ease) ease;
     aspect-ratio: 1;
     font-size: calc(var(--menu-button-size) - 6vh);
 }
 
-.menu_btn:hover{
+.menu_btn_hover:hover{
     box-shadow: 0px 0px 6px black;
     cursor: pointer;
+}
+
+.menu_btn_hover{
+    transition: box-shadow var(--ease) ease;
 }
 
 
@@ -189,4 +198,24 @@ body{
 .contacts_container_div{
     display: flex;
     flex-direction: column;
+}
+
+.inset_hover{
+    transition: box-shadow var(--ease) ease, color var(--ease) ease, font-size var(--ease) ease;
+    cursor: pointer;
+}
+.inset_hover:hover{
+    --box-shadow-size: 2px;
+    --box-shadow-blur: 10px;
+    box-shadow: var(--box-shadow-size) var(--box-shadow-size) var(--box-shadow-blur) rgba(0, 0, 0, 0.553), calc(var(--box-shadow-size) * -1) calc(var(--box-shadow-size) * -1) var(--box-shadow-blur) rgba(255, 255, 255, 0.51);
+    color: white;
+    font-size: calc(var(--menu-button-size) - 6.1vh);
+}
+
+.square{
+    aspect-ratio: 1;
+}
+
+.round_edges{
+    border-radius: 5%;
 }

@@ -1,7 +1,8 @@
 // JavaScript
 
 //import { serverListen } from "./api.js";
-
+let hoverClass =  "inset_hover";
+hoverClass = "button_hover";
 
 function toggleMenu() {
   const menu = document.getElementById('side-menu');
@@ -20,7 +21,7 @@ function addOptionsBar(arr, elemId){
     button.appendChild(img);
   }
 
-  button.classList.add("button_sidebar_right", "centered", "button_hover");
+  button.classList.add("button_sidebar_right", "centered", hoverClass);
   document.getElementById(elemId).appendChild(button);
   });
 }
