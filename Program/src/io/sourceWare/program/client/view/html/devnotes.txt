@@ -1,0 +1,4 @@
+ - Uses electron to run the app offline in the desktop
+
+ - To test the program, run:
+npm start

@@ -1,4 +1,8 @@
 // JavaScript
+
+//import { serverListen } from "./api.js";
+
+
 function toggleMenu() {
   const menu = document.getElementById('side-menu');
   menu.classList.toggle('open');
@@ -49,7 +53,7 @@ function createContact(){
       this.img = imgUrl;
       return this;
     },
-    whithDescription: function(desc){
+    withDescription: function(desc){
       this.description = desc;
       return this;
     },
@@ -106,10 +110,10 @@ function populateContacts(arr){
 }
 
 
-
 let myArray = [createElemObj().withText(1),createElemObj().withText(2)];
+//myArray = serverListen(); 
 addOptionsBar(myArray, "left_bar");
 addOptionsBar(myArray, "right_bar");
 
-let contactsArr = [createContact().whithDescription("Contact 1").withClickEvent(() => console.log("Hello!!!")), createContact().whithDescription("Contact 2").withRedirectUrl("contact.html")];
+let contactsArr = [createContact().withDescription("Contact 1").withClickEvent(() => console.log("Hello!!!")), createContact().withDescription("Contact 2").withRedirectUrl("contact.html")];
 populateContacts(contactsArr);

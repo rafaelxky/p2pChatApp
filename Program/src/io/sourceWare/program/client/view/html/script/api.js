@@ -1,8 +1,8 @@
-const http = require('http');
+const http = await import('http');
 
 const PORT = 7172;
 
-const server = http.createServer((req, res) => {
+export const server = http.createServer((req, res) => {
   if (req.method === 'POST' && req.headers['content-type'] === 'application/json') {
     let body = '';
 
@@ -14,7 +14,6 @@ const server = http.createServer((req, res) => {
       try {
         const jsonData = JSON.parse(body);
         console.log('Received JSON:', jsonData);
-        console.log(jsonData.message);
 
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({ status: 'success', received: jsonData }));
@@ -29,6 +28,6 @@ const server = http.createServer((req, res) => {
   }
 });
 
-server.listen(PORT, 'localhost', () => {
+export let serverListen = server.listen(PORT, 'localhost', () => {
   console.log(`Server listening on http://localhost:${PORT}`);
 });
