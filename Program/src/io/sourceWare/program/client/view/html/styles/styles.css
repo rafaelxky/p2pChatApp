@@ -93,6 +93,10 @@ body{
     cursor: pointer;
 }
 
+.pointer_cursor{
+    cursor: pointer;
+}
+
 
 .centered{
     display: flex;

@@ -42,6 +42,8 @@ function createContact(){
     description: undefined,
     img: undefined,
     contact: undefined,
+    onClick: undefined,
+    redirectUrl: undefined,
 
     withImage: function(imgUrl){
       this.img = imgUrl;
@@ -55,6 +57,14 @@ function createContact(){
       this.contact = info;
       return this;
     },
+    withClickEvent: function(func){
+      this.onClick = func;
+      return this;
+    },
+    withRedirectUrl: function(url){
+      this.redirectUrl = url;
+      return this;
+    }
   }
 }
 
@@ -78,6 +88,16 @@ function populateContacts(arr){
     if (elem.contact){
 
     }
+    if (elem.onClick){
+      contact.onclick = elem.onClick;
+      contact.classList.add("pointer_cursor");
+    }
+    if (elem.redirectUrl){
+      contact.onclick = function(){
+        window.location = elem.redirectUrl;
+      }
+      contact.classList.add("pointer_cursor");
+    }
 
     contact.appendChild(contact_img);
     contact.appendChild(contact_info);
@@ -91,5 +111,5 @@ let myArray = [createElemObj().withText(1),createElemObj().withText(2)];
 addOptionsBar(myArray, "left_bar");
 addOptionsBar(myArray, "right_bar");
 
-let contactsArr = [createContact().whithDescription("Contact 1"), createContact().whithDescription("Contact 2")];
+let contactsArr = [createContact().whithDescription("Contact 1").withClickEvent(() => console.log("Hello!!!")), createContact().whithDescription("Contact 2").withRedirectUrl("contact.html")];
 populateContacts(contactsArr);
