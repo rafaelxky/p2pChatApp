@@ -23,7 +23,7 @@ function addOptionsBar(arr, elemId){
   }
 
   // html sidebar button classes
-  button.classList.add("button_sidebar_right", "centered", "square" , hoverClass);
+  button.classList.add("button_sidebar_right", "centered","square_button", hoverClass);
   document.getElementById(elemId).appendChild(button);
   });
 }
