@@ -1,8 +1,9 @@
 // JavaScript
-
-//import { serverListen } from "./api.js";
+// script.js
 let hoverClass =  "inset_hover";
 hoverClass = "button_hover";
+
+console.log("script.js started");
 
 function toggleMenu() {
   const menu = document.getElementById('side-menu');
@@ -21,7 +22,8 @@ function addOptionsBar(arr, elemId){
     button.appendChild(img);
   }
 
-  button.classList.add("button_sidebar_right", "centered", hoverClass);
+  // html sidebar button classes
+  button.classList.add("button_sidebar_right", "centered", "square" , hoverClass);
   document.getElementById(elemId).appendChild(button);
   });
 }
@@ -110,11 +112,17 @@ function populateContacts(arr){
   });
 }
 
+console.log(window.electron.sayHello());
+console.log("Listening");
 
-let myArray = [createElemObj().withText(1),createElemObj().withText(2)];
-//myArray = serverListen(); 
-addOptionsBar(myArray, "left_bar");
-addOptionsBar(myArray, "right_bar");
+window.electron.onJsonReceived((data) => {
+  console.log("Received JSON data:", data);
+  let myArrayleft = data.left_bar;
+  let myArrayRight = data.right_bar;
+
+  addOptionsBar(myArrayleft, "left_bar");
+  addOptionsBar(myArrayRight, "right_bar");
+});
 
 let contactsArr = [createContact().withDescription("Contact 1").withClickEvent(() => console.log("Hello!!!")), createContact().withDescription("Contact 2").withRedirectUrl("contact.html")];
 populateContacts(contactsArr);
