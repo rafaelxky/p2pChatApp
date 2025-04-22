@@ -1,7 +1,8 @@
 // JavaScript
 // script.js
-let hoverClass =  "inset_hover";
-hoverClass = "button_hover";
+//let hoverClass =  "inset_hover";
+let hoverClass = "button_hover";
+//let hoverClass = "darken_hover";
 
 console.log("script.js started");
 

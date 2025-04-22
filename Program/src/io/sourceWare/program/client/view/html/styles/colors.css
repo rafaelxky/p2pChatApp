@@ -28,6 +28,8 @@
         --button-color-primary: var(--color-primary); /* Use primary color for primary button */
         --button-color-secondary: var(--color-tertiary); /* Use tertiary color for secondary button */
         --button-color-accent: var(--color-secondary); /* Use secondary color for accent button */
+
+        --light-text: white;
     }
     
     
