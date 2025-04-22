@@ -9,11 +9,16 @@
 
     --side-bar-button-padding: 20%;
 
-    --menu-button-size: 8vh;
+    --side-bar-shadow-size: 8px;
+
+    --menu-button-size: 5vh;
+    --menu-button-inner-size: 6vh;
+    --menu-button-border-radius: 4px;
+    --menu-button-font-size: 120%;
+    --menu-button-animation-font-size: calc(var(--menu-button-font-size)/1.1);
 
     --ease: .2s;
 
-    --menu-button-border-radius: 4px;
 }
 
 body{
@@ -31,13 +36,14 @@ body{
 }
 
 .menu_button{
-    width: 90%;
+    width: var(--menu-button-inner-size);
+    height: var(--menu-button-inner-size);
     aspect-ratio: 1;
-    font-size: 120%;
+    font-size: var(--menu-button-font-size);
 }
 
 .sidebar_shadow{
-    box-shadow: 0px 0px 17px rgba(0, 0, 0, 0.733);
+    box-shadow: 0px 0px var(--side-bar-shadow-size) rgba(0, 0, 0, 0.733);
 }
 
 .bg{
@@ -96,10 +102,21 @@ body{
     padding: 1vw;
 }
 
+.darken_hover{
+    filter: brightness(1);
+    -webkit-filter: brightness(100%);
+    transition: filter var(--ease) ease;
+    cursor: pointer;
+}
+
+.darken_hover:hover{
+    filter: brightness(0.5);
+    -webkit-filter: brightness(50%);
+}
+
 .button_hover{
     transition: box-shadow var(--ease) ease, color var(--ease) ease;
 }
-
 
 .button_hover:hover{
     color: var(--color-light);
@@ -139,7 +156,7 @@ body{
 }
 
 .wtext{
-    color: white;
+    color: var(--light-text);
 }
 
 .bold{
@@ -151,7 +168,7 @@ body{
     border-top-left-radius: var(--menu-button-border-radius);  
     border-bottom-left-radius: var(--menu-button-border-radius); 
     aspect-ratio: 1;
-    font-size: calc(var(--menu-button-size) - 6vh);
+    font-size: calc(var(--menu-button-size)/2.5);
 }
 
 .menu_btn_hover:hover{
@@ -216,7 +233,7 @@ body{
     --box-shadow-blur: 10px;
     box-shadow: var(--box-shadow-size) var(--box-shadow-size) var(--box-shadow-blur) rgba(0, 0, 0, 0.553), calc(var(--box-shadow-size) * -1) calc(var(--box-shadow-size) * -1) var(--box-shadow-blur) rgba(255, 255, 255, 0.51);
     color: white;
-    font-size: calc(var(--menu-button-size) - 6.1vh);
+    font-size: var(--menu-button-animation-font-size);
 }
 
 .square{
