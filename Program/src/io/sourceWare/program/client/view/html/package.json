@@ -2,11 +2,12 @@
   "name": "your-app-name",
   "version": "1.0.0",
   "description": "Your app description",
-  "main": "main.js", 
+  "main": "main.js",
   "scripts": {
-    "start": "electron ."  
+    "start": "electron ."
   },
   "devDependencies": {
-    "electron": "^25.0.0"  
-  }
+    "electron": "^25.0.0"
+  },
+  "type": "module"
 }

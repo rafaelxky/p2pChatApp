@@ -1,33 +1,34 @@
 :root {
-/*
-    --boxShadow: black;
---buttonBg: white;
---background:  rgba(109, 39, 117, 0.942);
---sidebar_button_line:  rgba(201, 30, 110, 0.455);
---sidebar_button_bg: wheat; */
-
---debug:purple;
---debug1:rgba(84, 0, 94, 0.942);
---debug2: rgba(109, 39, 117, 0.942);
-
-    --background-color: #3f0847; /* Light purple background */
-    --background-color2: #f3e5f5; /* Light purple background */
-    --color-text:: #4a148c;       /* Dark purple text */
-    --box-shadow-color: rgba(24, 5, 48, 0.795); /* Semi-transparent dark purple for box shadow */
+    /*
+        --boxShadow: black;
+    --buttonBg: white;
+    --background:  rgba(109, 39, 117, 0.942);
+    --sidebar_button_line:  rgba(201, 30, 110, 0.455);
+    --sidebar_button_bg: wheat; */
     
-    /* Primary, Secondary, and Tertiary Colors */
-    --color-primary: #ce52e4;    /* Primary color (vibrant purple) */
-    --color-secondary: #ab47bc;  /* Secondary color (lighter purple) */
-    --color-tertiary: #e1bee7;   /* Tertiary color (very light purple) */
+    --debug:purple;
+    --debug1:rgba(84, 0, 94, 0.942);
+    --debug2: rgba(109, 39, 117, 0.942);
     
-    --color-light: white;
-    --color-dark: black;
-    --color-sidebar-button:#9c27b0;
-
-    /* Button Colors */
-    --button-color-primary: var(--color-primary); /* Use primary color for primary button */
-    --button-color-secondary: var(--color-tertiary); /* Use tertiary color for secondary button */
-    --button-color-accent: var(--color-secondary); /* Use secondary color for accent button */
-}
-
-
+        --background-color: #3f0847; /* Light purple background */
+        --background-color2: #f3e5f5; /* Light purple background */
+        --color-text:: #4a148c;       /* Dark purple text */
+        --box-shadow-color: rgba(24, 5, 48, 0.795); /* Semi-transparent dark purple for box shadow */
+        
+        /* Primary, Secondary, and Tertiary Colors */
+        --color-primary: #ce52e4;    /* Primary color (vibrant purple) */
+        --color-secondary: #ab47bc;  /* Secondary color (lighter purple) */
+        --color-tertiary: #e1bee7;   /* Tertiary color (very light purple) */
+        
+        --color-light: white;
+        --color-dark: black;
+        --color-sidebar-button:#9c27b0;
+    
+        /* Button Colors */
+        --button-color-primary: var(--color-primary); /* Use primary color for primary button */
+        --button-color-secondary: var(--color-tertiary); /* Use tertiary color for secondary button */
+        --button-color-accent: var(--color-secondary); /* Use secondary color for accent button */
+    }
+    
+    
+    
