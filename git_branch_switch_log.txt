@@ -1,4 +1,0 @@
-M	git_log.txt
-Your branch is up to date with 'origin/main'.
-Already on 'main'
-[20/03/2025 19:10:52,50] Switched to branch "main". 

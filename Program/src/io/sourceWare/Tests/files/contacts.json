@@ -1,0 +1,12 @@
+{
+  "contacts": [
+    {
+      "id": "1",
+      "alias": "john_doe"
+    },
+    {
+      "id": "2",
+      "alias": "jane_doe"
+    }
+  ]
+}
