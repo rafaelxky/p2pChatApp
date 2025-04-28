@@ -62,6 +62,11 @@ public class JsonHandler {
 
         // Write the JSON object to a file
         try (FileWriter file = new FileWriter(url)) {
+            // todo: continue, make so that it appends to file, might need to use mthods from gile handler
+            List<ContactPojo> list = readContactJson();
+            list.add(contact);
+            list.forEach(elem -> System.out.println(elem));
+
             file.write(jsonObject.toString(4)); // Indentation of 4 spaces for pretty printing
             System.out.println("Successfully wrote JSON to file");
         } catch (IOException e) {
