@@ -1,5 +1,5 @@
 package io.sourceWare.program.client.model.connections.client_server;
 
-public class Client {
+public interface Client {
     // handles client logic
 }
