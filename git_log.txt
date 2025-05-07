@@ -1,0 +1,151 @@
+[20/03/2025 19:03:13,36] Running git add, commit, and push... 
+warning: in the working copy of 'AutoGit/git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[main 9d286cb] AutoGit files
+ 4 files changed, 16 insertions(+), 6 deletions(-)
+ create mode 100644 AutoGit/git_log.txt
+ rename push_repo.bat => AutoGit/push_repo.bat (100%)
+ rename update_repo.bat => AutoGit/update_repo.bat (100%)
+[20/03/2025 19:04:17,75] Running git add, commit, and push... 
+warning: in the working copy of 'git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[main 7a9b3a6] updated auto git files
+ 2 files changed, 43 insertions(+)
+ create mode 100644 push_repo.bat
+To https://github.com/rafaelxky/p2pChatApp
+   cdc5dfd..7a9b3a6  main -> main
+[20/03/2025 19:04:21,45] Git push completed. 
+[20/03/2025 19:25:13,76] Running git add, commit, and push... 
+warning: in the working copy of 'git_log.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'AutoGit/git_branch_switch_log.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'git_branch_switch_log.txt', LF will be replaced by CRLF the next time Git touches it
+[main 9d8ccf8] added more bat scripts for auto git
+ 7 files changed, 140 insertions(+)
+ create mode 100644 AutoGit/JavaBank_AutoCreateNewBranch.bat
+ create mode 100644 AutoGit/create_branch.bat
+ create mode 100644 AutoGit/git_branch_switch_log.txt
+ rename AutoGit/{update_repo.bat => pull_repo.bat} (100%)
+ create mode 100644 AutoGit/switch_branch.bat
+ create mode 100644 git_branch_switch_log.txt
+To https://github.com/rafaelxky/p2pChatApp
+   7a9b3a6..9d8ccf8  main -> main
+[20/03/2025 19:25:18,75] Git push completed. 
+[20/03/2025 19:25:26,13] Running git pull... 
+From https://github.com/rafaelxky/p2pChatApp
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[20/03/2025 19:25:27,40] Git pull completed. 
+[20/03/2025 19:27:06,49] Running git pull... 
+From https://github.com/rafaelxky/p2pChatApp
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[20/03/2025 19:27:07,53] Git pull completed. 
+[20/03/2025 19:27:28,21] Running git add, commit, and push... 
+warning: in the working copy of 'git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[main 2e0930d] more auto git updates
+ 2 files changed, 34 insertions(+), 1 deletion(-)
+To https://github.com/rafaelxky/p2pChatApp
+   9d8ccf8..2e0930d  main -> main
+[20/03/2025 19:27:33,17] Git push completed. 
+[20/03/2025 19:28:45,16] Running git add, commit, and push... 
+warning: in the working copy of 'git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[main b6b2cfe] autogit updates 2
+ 2 files changed, 14 insertions(+), 4 deletions(-)
+To https://github.com/rafaelxky/p2pChatApp
+   2e0930d..b6b2cfe  main -> main
+[20/03/2025 19:28:50,25] Git push completed. 
+[20/03/2025 19:29:09,39] Running git pull from main... 
+From https://github.com/rafaelxky/p2pChatApp
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[20/03/2025 19:29:10,42] Git pull from main completed. 
+[20/03/2025 19:30:21,47] Running git add, commit, and push... 
+warning: in the working copy of 'git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[main 3e9db0a] autogit update 3
+ 2 files changed, 13 insertions(+), 2 deletions(-)
+To https://github.com/rafaelxky/p2pChatApp
+   b6b2cfe..3e9db0a  main -> main
+[20/03/2025 19:30:25,26] Git push completed. 
+[20/03/2025 19:31:33,94] Running git add, commit, and push... 
+warning: in the working copy of 'git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[main 1ec931b] updates to auto git
+ 2 files changed, 11 insertions(+)
+To https://github.com/rafaelxky/p2pChatApp
+   3e9db0a..1ec931b  main -> main
+[20/03/2025 19:31:37,93] Git push completed. 
+[20/03/2025 19:32:50,67] Running git pull from main... 
+From https://github.com/rafaelxky/p2pChatApp
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[20/03/2025 19:32:51,77] Git pull from main completed. 
+[20/03/2025 19:36:59,56] Running git add, commit, and push... 
+warning: in the working copy of 'git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[main 1a58d9f] progrss to autogit 4
+ 4 files changed, 28 insertions(+), 8 deletions(-)
+To https://github.com/rafaelxky/p2pChatApp
+   1ec931b..1a58d9f  main -> main
+[20/03/2025 19:37:03,91] Git push completed. 
+[20/03/2025 19:49:41,50] Running git add, commit, and push... 
+warning: in the working copy of 'git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[main cfdf85e] auto git update 5, added file for storing path
+ 7 files changed, 36 insertions(+), 8 deletions(-)
+ create mode 100644 AutoGit/path.txt
+To https://github.com/rafaelxky/p2pChatApp
+   1a58d9f..cfdf85e  main -> main
+[20/03/2025 19:49:46,49] Git push completed. 
+[20/03/2025 19:53:07,24] Running git add, commit, and push... 
+warning: in the working copy of 'git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[20/03/2025 19:53:07,41] Committing with message: "auto git update 6, minor changes relating to logs" 
+[main 630ad4c] auto git update 6, minor changes relating to logs
+ 2 files changed, 10 insertions(+)
+To https://github.com/rafaelxky/p2pChatApp
+   cfdf85e..630ad4c  main -> main
+[20/03/2025 19:53:11,03] Git push completed. 
+[20/03/2025 19:55:15,85] Running git add, commit, and push... 
+warning: in the working copy of 'git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[20/03/2025 19:55:16,09] Committing with message: "update 7 to autogit" 
+[main c6fb8a5] update 7 to autogit
+ 3 files changed, 10 insertions(+), 1 deletion(-)
+[20/03/2025 19:55:16,45] Pushing to branch: "main" 
+To https://github.com/rafaelxky/p2pChatApp
+   630ad4c..c6fb8a5  main -> main
+[20/03/2025 19:55:19,89] Git push completed. 
+[20/03/2025 19:57:01,71] Running git add, commit, and push... 
+warning: in the working copy of 'git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[20/03/2025 19:57:01,90] Committing with message: "autogit test 1" 
+[main 66a89f8] autogit test 1
+ 2 files changed, 9 insertions(+), 15 deletions(-)
+[20/03/2025 19:57:02,29] Pushing to branch: "main" 
+To https://github.com/rafaelxky/p2pChatApp
+   c6fb8a5..66a89f8  main -> main
+[20/03/2025 19:57:05,75] Git push completed. 
+[20/03/2025 19:57:32,97] Running git add, commit, and push... 
+warning: in the working copy of 'git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[20/03/2025 19:57:33,37] Committing with message: "autogit test 2" 
+[main 7cef964] autogit test 2
+ 1 file changed, 9 insertions(+)
+[20/03/2025 19:57:33,80] Pushing to branch: "main" 
+To https://github.com/rafaelxky/p2pChatApp
+   66a89f8..7cef964  main -> main
+[20/03/2025 19:57:37,02] Git push completed. 
+[20/03/2025 19:59:12,92] Running git add, commit, and push... 
+warning: in the working copy of 'git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[20/03/2025 19:59:13,09] Committing with message: "autogit test 3" 
+[main 2085be2] autogit test 3
+ 1 file changed, 9 insertions(+)
+[20/03/2025 19:59:13,42] Pushing to branch: "main" 
+To https://github.com/rafaelxky/p2pChatApp
+   7cef964..2085be2  main -> main
+[20/03/2025 19:59:16,75] Git push completed. 
+[20/03/2025 19:59:40,85] Running git add, commit, and push... 
+warning: in the working copy of 'git_log.txt', LF will be replaced by CRLF the next time Git touches it
+[20/03/2025 19:59:41,12] Committing with message: "autogit test 4" 
+[main e5d1ae7] autogit test 4
+ 2 files changed, 10 insertions(+), 1 deletion(-)
+[20/03/2025 19:59:41,42] Pushing to branch: "main" 
+To https://github.com/rafaelxky/p2pChatApp
+   2085be2..e5d1ae7  main -> main
+[20/03/2025 19:59:44,60] Git push completed. 
+[20/03/2025 20:01:04,72] Running git pull from main... 
+From https://github.com/rafaelxky/p2pChatApp
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+[20/03/2025 20:01:05,93] Git pull from main completed. 

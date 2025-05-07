@@ -1,0 +1,54 @@
+//Notes:
+Make branches
+Create documentation
+
+//Documentation:
+@ Project git repo
+https://github.com/rafaelxky/p2pChatApp
+
+@ tor codebase cocumentation
+https://tor-core.readthedocs.io/en/latest/index.html
+
+@ onion service setup
+https://community.torproject.org/onion-services/setup/
+
+@ tor messaging app
+https://blog.torproject.org/tor-messenger-beta-chat-over-tor-easily/
+
+
+
+//Issues: 
+#title: Tor adress gen issue:
+#date: 20/mar/2025
+@ Desc:
+- Tor isn´t running with proper config and not generating the adress
+@ Temp solution:
+- Run tor with proper run config from terminal
+- tor/tor.exe -f tor/torrc
+@ try:
+- creating a batch file with the run command
+
+#title: intelij folder using Compact Middle Packages
+@ Solution: to the right of packages, when you hover, press the 3 dots, select apearence, unselect Compact Middle Packages.
+
+@ todo:
+# title: ncat connection issue with UDP connectio
+Ncat: Uma mensagem enviada num socket de datagrama era maior do que a memória intermÚdia de mensagens internas ou excedia algum outro limite da rede, ou a memória intermÚdia utilizada para receber um datagrama era menor do que o pr¾prio datagrama.
+Note: works fine within the program
+
+Issue:
+Decryption error
+solution:
+Ensuring that the key was a multiple of 16 by filling or trimming the byte array.
+
+//Usefull commands:
+@ Receive TCP packets with ncat
+- ncat -l 127.0.0.1 9001
+@ Send TCP packets with ncat
+- ncat 127.0.0.1 9001
+@ Receive UPD packets with ncat
+- ncat -lu 127.0.0.1 9001
+@ Send UPD packets with ncat
+- ncat -u 127.0.0.1 9001
+
+
