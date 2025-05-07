@@ -103,7 +103,7 @@ public class Server implements Runnable{
 
     public Socket getLastFromSocketList(){
 
-        return this.socketList.getLast();
+        return this.socketList.get(socketList.size() - 1);
     }
 
     public ArrayList<Socket> getSocketList() {
