@@ -1,8 +1,7 @@
 package io.sourceWare;
 
-import io.sourceWare.program.client.model.connections.p2p.ReceiveUdpPacket;
-import io.sourceWare.program.client.model.connections.p2p.SendUdpPacket;
-import io.sourceWare.program.client.view.Popus;
+import io.sourceWare.program.client.model.connections.matrix.MatrixClient;
+import io.sourceWare.program.client.model.connections.udp.SendUdpPacket;
 
 import java.io.IOException;
 
@@ -12,11 +11,7 @@ public class PlayGround {
         //receiveThread.start();
         //System.out.println("receiving start");
 
-        Thread.sleep(100);
 
-        Thread sendThread = new Thread(new SendUdpPacket("Hello World!"));
-        sendThread.start();
-        System.out.println("send start");
 
     }
 }

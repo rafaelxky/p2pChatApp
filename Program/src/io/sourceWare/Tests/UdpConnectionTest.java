@@ -1,10 +1,8 @@
 package io.sourceWare.Tests;
 
 import io.sourceWare.program.client.model.connections.ConnectionData;
-import io.sourceWare.program.client.model.connections.p2p.ReceiveUdpPacket;
-import io.sourceWare.program.client.model.connections.p2p.SendUdpPacket;
-
-import java.net.Socket;
+import io.sourceWare.program.client.model.connections.udp.ReceiveUdpPacket;
+import io.sourceWare.program.client.model.connections.udp.SendUdpPacket;
 
 public class UdpConnectionTest {
     public static void main(String[] args) {

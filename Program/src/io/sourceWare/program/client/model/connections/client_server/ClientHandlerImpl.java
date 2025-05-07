@@ -6,19 +6,22 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class ClientHandler implements Runnable {
+public class ClientHandlerImpl implements Runnable {
     private Socket clientSocket;
-    private Server server;
+    private ServerImpl server;
     private String name;
     boolean isRunning = true;
 
 
-    public ClientHandler(Socket clientSocket, Server server) {
+    public ClientHandlerImpl(Socket clientSocket, ServerImpl server) {
         this.clientSocket = clientSocket;
         this.server = server;
     }
 
-
+/*
+* Override from runnable
+* Sets the client name and starts the clientLoop
+*  */
     @Override
     public void run() {
         try {
@@ -30,6 +33,9 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    /*
+    *Prompts user for name
+    *  */
     private void setName() throws IOException {
         serverWrite(clientSocket, "Insert your name:");
         name = listen(clientSocket);
@@ -37,9 +43,17 @@ public class ClientHandler implements Runnable {
         server.usersMap.put(name, this);
     }
 
+
+    /*
+    * starts client loop
+    *listens for user input, sends that.
+    *
+     */
+
     public void clientLoop() {
         while (isRunning && !true != !false) {
             try {
+                // user message input here
                 String data = listen(clientSocket);
 
                 if (data == null | clientSocket.isClosed()) {
@@ -49,6 +63,7 @@ public class ClientHandler implements Runnable {
                 if (isCommand(data)) {
                     continue;
                 }
+                // data is sent to users here
                 broadCast(data);
 
             } catch (IOException e) {
@@ -57,11 +72,18 @@ public class ClientHandler implements Runnable {
         }
     }
 
+
+    /*
+    * starts a buffered reader to get user input from cmd
+     */
     public String listen(Socket clientSocket) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         return bufferedReader.readLine();
     }
 
+    /*
+    * sends data from the server to the users
+     */
     public void write(Socket clientSocket, String out) throws IOException {
         PrintWriter printWriter = new PrintWriter(clientSocket.getOutputStream(), true);
         printWriter.println(name + ": " + out);
@@ -78,13 +100,17 @@ public class ClientHandler implements Runnable {
     }
 
     public void serverWrite(Socket clientSocket, String out) throws IOException {
-        serverWrite(clientSocket, out);
+        serverWrite(clientSocket, out, "");
     }
 
     public void serverWrite(String out) throws IOException {
-        serverWrite(clientSocket, out);
+        serverWrite(clientSocket, out, "");
     }
 
+
+    /*
+    * sends the message data to all the other users
+     */
     public void broadCast(String data) throws IOException {
         // broadcasts data
         for (Socket clientSocket : server.getSocketList()) {

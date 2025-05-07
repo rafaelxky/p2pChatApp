@@ -1,0 +1,85 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 40px;
+}
+
+.bg{
+    background-color: rgb(187, 3, 187);
+}
+
+.debug{
+    background-color: purple;
+}
+
+.debug1{
+    background-color: rgba(84, 0, 94, 0.942);
+}
+
+.debug2{
+    background-color: rgba(109, 39, 117, 0.942);
+}
+
+.right_bar{
+    container: flex;
+    right: 0;
+    height: 100vh;
+
+}
+
+.left_bar{
+    container: flex;
+    left: 0;
+    height: 100vh;
+}
+
+.padding_button{
+    padding: 2%;
+}
+
+.container_main{
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+}
+
+.center_div{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+
+
+.centered{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.button_sidebar_right {
+    --border: rgba(201, 30, 110, 0.455);
+    background-color: wheat;
+    width: 5vw;
+    height: 5vw;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-top: 0%;
+    z-index: 1;
+}
+
+.button_sidebar_right:hover{
+    color: black;
+    box-shadow: 0px 0px 10px black;
+    background-color: white;
+
+}
+
+.menu{
+    z-index: 1;
+    height: 5vw;
+    width: 5vw;
+    font-size: 2vw;
+    padding: 3vw;
+}
