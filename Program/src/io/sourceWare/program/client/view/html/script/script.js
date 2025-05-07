@@ -77,33 +77,34 @@ function createContact(){
 }
 
 function populateContacts(arr){
-  arr.forEach((elem, id) => {
+  console.log("populating Contacts")
+  arr.forEach((elem) => {
     let contact = document.createElement("div");
     contact.classList.add("contact_div", "debug"); 
 
-    let contact_img = document.createElement("div")
+    let contact_img = document.createElement("img");
     contact_img.classList.add("contact_img");
 
     let contact_info = document.createElement("div");
-    contact_info.classList.add("debug1" + "contact_info_div");
+    contact_info.classList.add("debug1", "contact_info_div");
 
-    if (elem.description){
+    if (elem.description) {
       contact_info.innerText = elem.description; 
     }
-    if (elem.img){
+    if (elem.img) {
       contact_img.src = elem.img;
     }
-    if (elem.contact){
 
+    if (elem.onClick && elem.redirectUrl) {
+      console.warn("Both onClick and redirectUrl defined — using redirectUrl");
     }
-    if (elem.onClick){
-      contact.onclick = elem.onClick;
-      contact.classList.add("pointer_cursor");
-    }
-    if (elem.redirectUrl){
-      contact.onclick = function(){
+    if (elem.redirectUrl) {
+      contact.onclick = () => {
         window.location = elem.redirectUrl;
-      }
+      };
+      contact.classList.add("pointer_cursor");
+    } else if (elem.onClick) {
+      contact.onclick = elem.onClick;
       contact.classList.add("pointer_cursor");
     }
 
@@ -112,6 +113,7 @@ function populateContacts(arr){
     document.getElementById("main_div").appendChild(contact);
   });
 }
+
 
 console.log(window.electron.sayHello());
 console.log("Listening");
@@ -125,5 +127,7 @@ window.electron.onJsonReceived((data) => {
   addOptionsBar(myArrayRight, "right_bar");
 });
 
+//todo: populateContacts and addOptionsBar are not working
+// todo: script.js is not behing loaded from index.html
 let contactsArr = [createContact().withDescription("Contact 1").withClickEvent(() => console.log("Hello!!!")), createContact().withDescription("Contact 2").withRedirectUrl("contact.html")];
 populateContacts(contactsArr);
