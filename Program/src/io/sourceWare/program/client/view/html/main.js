@@ -4,6 +4,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import http from 'http';
 
+console.log("main.mjs")
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
