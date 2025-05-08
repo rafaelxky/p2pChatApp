@@ -18,6 +18,7 @@ function addOptionsBar(arr, elemId) {
 }
 
 // Function to populate contacts
+// todo: fix this 
 function populateContacts(arr) {
   arr.forEach((elem, id) => {
     let contact = document.createElement("div");
@@ -59,7 +60,9 @@ window.electron.onJsonReceived((data) => {
   console.log("Received JSON data:", data);
   let myArrayLeft = data.left_bar;
   let myArrayRight = data.right_bar;
+  let contacts = data.contacts;
 
   addOptionsBar(myArrayLeft, "left_bar");
   addOptionsBar(myArrayRight, "right_bar");
+  populateContacts(contacts);
 });
