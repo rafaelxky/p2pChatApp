@@ -1,6 +1,8 @@
 // script.js
 console.log("script.js started");
 
+let contacts = [];
+
 // Function to add options to the sidebar
 function addOptionsBar(arr, elemId) {
   arr.forEach((element, id) => {
@@ -18,11 +20,11 @@ function addOptionsBar(arr, elemId) {
 }
 
 // Function to populate contacts
-// todo: fix this 
 function populateContacts(arr) {
   arr.forEach((elem, id) => {
     let contact = document.createElement("div");
     contact.classList.add("contact_div", "debug");
+    contact.contact = "contact" + contact.length;
 
     let contact_img = document.createElement("div");
     contact_img.classList.add("contact_img");
@@ -44,12 +46,19 @@ function populateContacts(arr) {
       };
       contact.classList.add("pointer_cursor");
     }
+    if(!elem.redirectUrl){
+      contact.onClick = function(){
+        // serve the page for that specific user
+      }
+    }
 
     contact.appendChild(contact_img);
     contact.appendChild(contact_info);
     document.getElementById("main_div").appendChild(contact);
   });
 }
+
+
 
 // Test the communication with the main process
 console.log(window.electron.sayHello());
