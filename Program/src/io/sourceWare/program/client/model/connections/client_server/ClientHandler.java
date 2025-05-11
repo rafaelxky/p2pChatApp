@@ -78,6 +78,7 @@ public class ClientHandler implements Runnable {
         printWriter.println(out);
     }
 
+    // todo: fix here again
     public void serverWrite(Socket clientSocket, String out) throws IOException {
         System.out.println();
         serverWrite(clientSocket, out);
