@@ -4,7 +4,7 @@ import io.sourceWare.program.client.model.connections.client_server.Server;
 
 public class ClientServerTests {
     public static void main(String[] args) {
-        // 127.0.0.1 9005
+        // ncat 172.31.48.1 9005
         Server server = new Server();
         Thread thread1 = new Thread(server);
         thread1.start();
