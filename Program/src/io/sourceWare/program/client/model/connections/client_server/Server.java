@@ -4,11 +4,9 @@ import io.sourceWare.program.client.model.connections.client_server.ClientHandle
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.net.UnknownHostException;
+import java.net.*;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -20,8 +18,8 @@ public class Server implements Runnable{
 
     static {
         try {
-            HOSTNAME = InetAddress.getLocalHost().getHostAddress();
-        } catch (UnknownHostException e) {
+            HOSTNAME = getLocalLanAddress();
+        } catch (SocketException e) {
             throw new RuntimeException(e);
         }
     }
@@ -47,13 +45,17 @@ public class Server implements Runnable{
      * sets up serverSocket on PORT and initiates serverLoop
      * */
     public void start(){
-        System.out.println("IP: " + HOSTNAME);
+        try {
+            System.out.println("IP: " + HOSTNAME + " - " + InetAddress.getByName(HOSTNAME));
+        } catch (UnknownHostException e) {
+            throw new RuntimeException(e);
+        }
         System.out.println("PORT: " + PORT);
         System.out.println("started");
 
         try {
             cachedPool = Executors.newCachedThreadPool();
-            serverSocket = new ServerSocket(PORT);
+            serverSocket = new ServerSocket(PORT, 0 , InetAddress.getByName(HOSTNAME));
             System.out.println("Waiting connection");
             System.out.println("Connection established");
             serverLoop();
@@ -122,6 +124,29 @@ public class Server implements Runnable{
         this.cachedPool = cachedPool;
     }
 
+    public static String getLocalLanAddress() throws SocketException {
+        System.out.println("trying to get local IP");
+        Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
 
+        while (interfaces.hasMoreElements()) {
+            NetworkInterface iface = interfaces.nextElement();
+            if (!iface.isUp() || iface.isLoopback() || iface.isVirtual()
+            || iface.getName().toLowerCase().contains("virtual")
+            || iface.getName().toLowerCase().contains("docket")
+            || iface.getName().toLowerCase().contains("vmware")
+            || iface.getName().toLowerCase().contains("wsl")
+            ) {continue;}
+
+            Enumeration<InetAddress> addrs = iface.getInetAddresses();
+            while (addrs.hasMoreElements()) {
+                InetAddress addr = addrs.nextElement();
+                if (addr instanceof Inet4Address) {
+                    return addr.getHostAddress();
+                }
+            }
+        }
+        System.out.println("Failed to find local IP, using 127.0.0.1");
+        return "127.0.0.1"; // fallback
+    }
 
 }

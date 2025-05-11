@@ -4,7 +4,8 @@ import io.sourceWare.program.client.model.connections.client_server.Server;
 
 public class ClientServerTests {
     public static void main(String[] args) {
-        // ncat 172.31.48.1 9005
+        // ncat <ip> 9005
+        // the ip is shown when server starts
         Server server = new Server();
         Thread thread1 = new Thread(server);
         thread1.start();
