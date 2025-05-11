@@ -31,11 +31,6 @@ https://blog.torproject.org/tor-messenger-beta-chat-over-tor-easily/
 #title: intelij folder using Compact Middle Packages
 @ Solution: to the right of packages, when you hover, press the 3 dots, select apearence, unselect Compact Middle Packages.
 
-@ todo:
-# title: ncat connection issue with UDP connectio
-Ncat: Uma mensagem enviada num socket de datagrama era maior do que a memória intermÚdia de mensagens internas ou excedia algum outro limite da rede, ou a memória intermÚdia utilizada para receber um datagrama era menor do que o pr¾prio datagrama.
-Note: works fine within the program
-
 Issue:
 Decryption error
 solution:
