@@ -1,0 +1,10 @@
+ - Uses electron to run the app offline in the desktop
+
+ - To test the program, run:
+npm start
+npx electron .
+
+ - to install electron
+npm install electron --save-dev
+
+http://localhost:7172
