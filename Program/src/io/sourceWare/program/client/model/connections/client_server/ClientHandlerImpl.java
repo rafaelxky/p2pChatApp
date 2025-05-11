@@ -8,12 +8,12 @@ import java.net.Socket;
 
 public class ClientHandlerImpl implements Runnable {
     private Socket clientSocket;
-    private ServerImpl server;
+    private Server server;
     private String name;
     boolean isRunning = true;
 
 
-    public ClientHandlerImpl(Socket clientSocket, ServerImpl server) {
+    public ClientHandlerImpl(Socket clientSocket, Server server) {
         this.clientSocket = clientSocket;
         this.server = server;
     }

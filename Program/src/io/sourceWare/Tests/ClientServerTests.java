@@ -1,11 +1,11 @@
 package io.sourceWare.Tests;
 
-import io.sourceWare.program.client.model.connections.client_server.ServerImpl;
+import io.sourceWare.program.client.model.connections.client_server.Server;
 
 public class ClientServerTests {
     public static void main(String[] args) {
         // 127.0.0.1 9005
-        ServerImpl server = new ServerImpl();
+        Server server = new Server();
         Thread thread1 = new Thread(server);
         thread1.start();
         // todo: fix connection reset error
