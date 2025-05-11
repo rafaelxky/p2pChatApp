@@ -31,6 +31,7 @@ public class ClientHandler implements Runnable {
     }
 
     private void setName() throws IOException {
+        System.out.println("setName called");
         serverWrite(clientSocket, "Insert your name:");
         name = listen(clientSocket);
         serverWrite(clientSocket, "Hello " + name);
@@ -78,6 +79,7 @@ public class ClientHandler implements Runnable {
     }
 
     public void serverWrite(Socket clientSocket, String out) throws IOException {
+        System.out.println();
         serverWrite(clientSocket, out);
     }
 

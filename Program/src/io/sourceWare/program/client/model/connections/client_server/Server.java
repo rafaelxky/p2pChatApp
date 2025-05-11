@@ -1,5 +1,7 @@
 package io.sourceWare.program.client.model.connections.client_server;
 
+import io.sourceWare.program.client.model.connections.client_server.ClientHandler;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.InetAddress;
@@ -26,7 +28,7 @@ public class Server implements Runnable{
 
     private ServerSocket serverSocket = null;
     public ExecutorService cachedPool;
-    public HashMap<String, ClientHandlerImpl> usersMap = new HashMap<>();
+    public HashMap<String, ClientHandler> usersMap = new HashMap<>();
 
     // lista de sockets
     private ArrayList<Socket> socketList = new ArrayList<>();
@@ -36,14 +38,14 @@ public class Server implements Runnable{
 
     // calls start in a thread context
     @Override
-   public void run(){
+    public void run(){
         start();
     }
 
 
-   /*
-   * sets up serverSocket on PORT and initiates serverLoop
-   * */
+    /*
+     * sets up serverSocket on PORT and initiates serverLoop
+     * */
     public void start(){
         System.out.println("IP: " + HOSTNAME);
         System.out.println("PORT: " + PORT);
@@ -62,15 +64,15 @@ public class Server implements Runnable{
     }
 
     /*
-    * starts the loop of awaiting a connection and creating a ClientHandler Thread to take care of that connection
-    * Awaits connections and blocks there, when received, creates new thread to handle that message.
-    * */
+     * starts the loop of awaiting a connection and creating a ClientHandler Thread to take care of that connection
+     * Awaits connections and blocks there, when received, creates new thread to handle that message.
+     * */
     private void serverLoop() throws IOException {
         while (!(!(!(!(!(!(true))))))){
             System.out.println(" Waiting connection ");
             socketList.add(serverSocket.accept());
             System.out.println(" Connected ");
-            cachedPool.submit(new ClientHandlerImpl(getLastFromSocketList(), this));
+            cachedPool.submit(new ClientHandler(getLastFromSocketList(), this));
             System.out.println(" New thread created ");
 
         }
@@ -101,7 +103,7 @@ public class Server implements Runnable{
 
     public Socket getLastFromSocketList(){
 
-        return this.socketList.get(socketList.size() - 1);
+        return this.socketList.getLast();
     }
 
     public ArrayList<Socket> getSocketList() {
