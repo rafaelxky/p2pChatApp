@@ -14,7 +14,15 @@ import java.util.concurrent.Executors;
 public class Server implements Runnable{
     private static final int PORT = 9005;
 
-    private static String HOSTNAME;
+    private static InetAddress HOSTNAME;
+
+    static {
+        try {
+            HOSTNAME = InetAddress.getByName("127.0.0.1");
+        } catch (UnknownHostException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     private ServerSocket serverSocket = null;
     public ExecutorService cachedPool;
@@ -44,7 +52,11 @@ public class Server implements Runnable{
 
         try {
             cachedPool = Executors.newCachedThreadPool();
-            serverSocket = new ServerSocket(PORT);
+            // add HOSTNAME here for testing, remove for deployment
+            //serverSocket = new ServerSocket(PORT);
+            serverSocket = new ServerSocket(PORT, 0 , HOSTNAME);
+            System.out.println(HOSTNAME);
+            
             System.out.println("Waiting connection");
             serverLoop();
             System.out.println("entering loop");
