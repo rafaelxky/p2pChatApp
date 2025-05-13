@@ -56,18 +56,21 @@ public class ClientHandler implements Runnable {
                 // user message input here
                 String data = listen(clientSocket);
 
-                if (data == null | clientSocket.isClosed()) {
-                    endConnection();
-                    return;
-                }
                 if (isCommand(data)) {
                     continue;
                 }
                 // data is sent to users here
+                System.out.println(data);
                 broadCast(data);
 
             } catch (IOException e) {
-                System.out.println(e.getMessage());
+                if (e.getMessage() != null && e.getMessage().toLowerCase().contains("connection reset")) {
+                    System.out.println("Client " + name + " disconnected abruptly.");
+                } else {
+                    System.out.println("Error in clientLoop(): " + e.getMessage());
+                }
+                endConnection();
+                return;
             }
         }
     }

@@ -14,15 +14,7 @@ import java.util.concurrent.Executors;
 public class Server implements Runnable{
     private static final int PORT = 9005;
 
-    private static final String HOSTNAME;
-
-    static {
-        try {
-            HOSTNAME = getLocalLanAddress();
-        } catch (SocketException e) {
-            throw new RuntimeException(e);
-        }
-    }
+    private static String HOSTNAME;
 
     private ServerSocket serverSocket = null;
     public ExecutorService cachedPool;
@@ -45,19 +37,15 @@ public class Server implements Runnable{
      * sets up serverSocket on PORT and initiates serverLoop
      * */
     public void start(){
-        try {
-            System.out.println("IP: " + HOSTNAME + " - " + InetAddress.getByName(HOSTNAME));
-        } catch (UnknownHostException e) {
-            throw new RuntimeException(e);
-        }
+        System.out.println(getAllIps() + " - all ips");
+
         System.out.println("PORT: " + PORT);
         System.out.println("started");
 
         try {
             cachedPool = Executors.newCachedThreadPool();
-            serverSocket = new ServerSocket(PORT, 0 , InetAddress.getByName(HOSTNAME));
+            serverSocket = new ServerSocket(PORT);
             System.out.println("Waiting connection");
-            System.out.println("Connection established");
             serverLoop();
             System.out.println("entering loop");
         } catch (IOException e) {
@@ -124,29 +112,39 @@ public class Server implements Runnable{
         this.cachedPool = cachedPool;
     }
 
-    public static String getLocalLanAddress() throws SocketException {
-        System.out.println("trying to get local IP");
-        Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
+    public static String getAllIps() {
+        StringBuilder ipList = new StringBuilder();
 
-        while (interfaces.hasMoreElements()) {
-            NetworkInterface iface = interfaces.nextElement();
-            if (!iface.isUp() || iface.isLoopback() || iface.isVirtual()
-            || iface.getName().toLowerCase().contains("virtual")
-            || iface.getName().toLowerCase().contains("docket")
-            || iface.getName().toLowerCase().contains("vmware")
-            || iface.getName().toLowerCase().contains("wsl")
-            ) {continue;}
+        try {
+            Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
 
-            Enumeration<InetAddress> addrs = iface.getInetAddresses();
-            while (addrs.hasMoreElements()) {
-                InetAddress addr = addrs.nextElement();
-                if (addr instanceof Inet4Address) {
-                    return addr.getHostAddress();
+            while (interfaces.hasMoreElements()) {
+                NetworkInterface iface = interfaces.nextElement();
+
+                // Skip down, loopback, or virtual interfaces
+                if (!iface.isUp() || iface.isLoopback() || iface.isVirtual()) {
+                    continue;
+                }
+
+                Enumeration<InetAddress> addresses = iface.getInetAddresses();
+                while (addresses.hasMoreElements()) {
+                    InetAddress addr = addresses.nextElement();
+
+                    // Only show IPv4 addresses
+                    if (addr instanceof Inet4Address) {
+                        ipList.append(iface.getDisplayName())
+                                .append(" - ")
+                                .append(addr.getHostAddress())
+                                .append("\n");
+                    }
                 }
             }
+
+        } catch (SocketException e) {
+            return "Error retrieving IP addresses: " + e.getMessage();
         }
-        System.out.println("Failed to find local IP, using 127.0.0.1");
-        return "127.0.0.1"; // fallback
+
+        return ipList.toString().isEmpty() ? "No active IP addresses found." : ipList.toString();
     }
 
 }
