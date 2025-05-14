@@ -16,7 +16,7 @@ public class ClientWrite implements Runnable{
         System.out.println("client write");
         this.bufferedReader = bufferedReader;
         this.clientSocket = clientSocket;
-        // this is the id for the other user, maybe dont use the real ip but another identifier
+        // this is the id for the other user, maybe don't use the real ip but another identifier
         this.foreignAddress = foreignAddress;
 
     }
@@ -26,7 +26,7 @@ public class ClientWrite implements Runnable{
         while (true){
             try {
                 // read line from user
-                line = bufferedReader.readLine();
+                line = getUserInput();
                 System.out.println(line);
                 // send data to server
                 clientSocket.getOutputStream().write(line.getBytes());
@@ -41,5 +41,10 @@ public class ClientWrite implements Runnable{
     public void run() {
         startListening();
     }
-}
 
+    public String getUserInput() throws IOException {
+        // method to be switched out later to get data from the view layer.
+        return bufferedReader.readLine();
+    }
+
+}

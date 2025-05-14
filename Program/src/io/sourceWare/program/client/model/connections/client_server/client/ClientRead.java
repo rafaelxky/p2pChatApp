@@ -31,11 +31,16 @@ public class ClientRead implements Runnable{
         while (true){
             try (BufferedReader serverReader = new BufferedReader(new java.io.InputStreamReader(clientSocket.getInputStream()))){
                 String message = serverReader.readLine();
-                System.out.println(message);
+                showMessage(message);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
+    }
+
+    public void showMessage(String message){
+        // placeholder method to be switched later to send the message to the view layer.
+        System.out.println(message);
     }
 
 }
