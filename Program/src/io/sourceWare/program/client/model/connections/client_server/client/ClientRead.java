@@ -28,13 +28,14 @@ public class ClientRead implements Runnable{
     }
 
     public void listeningLoop(){
+        try {
+            BufferedReader serverReader = new BufferedReader(new java.io.InputStreamReader(clientSocket.getInputStream()));
         while (true){
-            try (BufferedReader serverReader = new BufferedReader(new java.io.InputStreamReader(clientSocket.getInputStream()))){
                 String message = serverReader.readLine();
                 showMessage(message);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
