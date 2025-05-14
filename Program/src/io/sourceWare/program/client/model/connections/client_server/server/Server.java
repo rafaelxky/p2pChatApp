@@ -1,6 +1,4 @@
-package io.sourceWare.program.client.model.connections.client_server;
-
-import io.sourceWare.program.client.model.connections.client_server.ClientHandler;
+package io.sourceWare.program.client.model.connections.client_server.server;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +11,7 @@ import java.util.concurrent.Executors;
 
 public class Server implements Runnable{
     private static final int PORT = 9005;
+    private static final boolean testing = true;
 
     private static InetAddress HOSTNAME;
 
@@ -52,9 +51,7 @@ public class Server implements Runnable{
 
         try {
             cachedPool = Executors.newCachedThreadPool();
-            // add HOSTNAME here for testing, remove for deployment
-            //serverSocket = new ServerSocket(PORT);
-            serverSocket = new ServerSocket(PORT, 0 , HOSTNAME);
+            serverSocket = newServerSocket();
             System.out.println(HOSTNAME);
             
             System.out.println("Waiting connection");
@@ -63,6 +60,18 @@ public class Server implements Runnable{
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private ServerSocket newServerSocket() {
+        try {
+            if (testing)
+            return new ServerSocket(PORT);
+            if (!testing)
+            return new ServerSocket(PORT, 0 , HOSTNAME);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
     }
 
     /*
@@ -81,6 +90,7 @@ public class Server implements Runnable{
     }
 
     public void sendToClient(String message){
+        // send a message to a specific user (message, userId)
 
     }
 
