@@ -9,12 +9,12 @@ import java.net.Socket;
 public class ClientHandler implements Runnable {
     private Socket clientSocket;
     private Server server;
-    private String name;
     public boolean isRunning = true;
     public String serverTextColor = "\u001B[33m";
     public Integer[] rgb = {255, 255, 255};
     public String ansiColorCode = "\u001B[38;2;" + rgb[0] + ";" + rgb[1] + ";" + rgb[2] + "m";
     public final String RESET = "\u001B[0m";
+    private String name;
 
     public ClientHandler(Socket clientSocket, Server server) {
         this.clientSocket = clientSocket;
@@ -28,7 +28,7 @@ public class ClientHandler implements Runnable {
     @Override
     public void run() {
         try {
-            setName();
+            setNameByInput();
             clientLoop();
 
         } catch (IOException e) {
@@ -39,13 +39,12 @@ public class ClientHandler implements Runnable {
     /*
      *Prompts user for name
      *  */
-    private void setName() throws IOException {
+    private void setNameByInput() throws IOException {
         serverWrite(clientSocket, "Insert your name:");
-        name = listen(clientSocket);
-        serverWrite(clientSocket, "Hello " + ansiColorCode +  name + RESET);
+        setName(listen(clientSocket));
+        serverWrite(clientSocket, "Hello " + getName());
         server.usersMap.put(name, this);
     }
-
 
     /*
      * starts client loop
@@ -54,6 +53,7 @@ public class ClientHandler implements Runnable {
      */
 
     public void clientLoop() {
+        // receives data from the user and broadcasts it
         System.out.println("client loop");
         while (isRunning && !true != !false) {
             try {
@@ -63,12 +63,13 @@ public class ClientHandler implements Runnable {
                 if (isCommand(data)) {
                     continue;
                 }
+
                 // data is sent to users here
                 broadCast(data);
 
             } catch (IOException e) {
                 if (e.getMessage() != null && e.getMessage().toLowerCase().contains("connection reset")) {
-                    System.out.println("Client " + name + " disconnected abruptly.");
+                    System.out.println("Client " + getName() + " disconnected abruptly.");
                 } else {
                     System.out.println("Error in clientLoop(): " + e.getMessage());
                 }
@@ -92,12 +93,12 @@ public class ClientHandler implements Runnable {
      */
     public void write(Socket clientSocket, String out) throws IOException {
         PrintWriter printWriter = new PrintWriter(clientSocket.getOutputStream(), true);
-        printWriter.println(name + ": " + out);
+        printWriter.println(getName() + ": " + out);
     }
 
     public void whisper(Socket clientSocket, String out) throws IOException {
         PrintWriter printWriter = new PrintWriter(clientSocket.getOutputStream(), true);
-        printWriter.println(name + " wispered to you: " + out);
+        printWriter.println(getName() + " wispered to you: " + out);
     }
 
     public void serverWrite(Socket clientSocket, String out, String colorCode) throws IOException {
@@ -128,7 +129,7 @@ public class ClientHandler implements Runnable {
     }
 
     public String getName() {
-        return name;
+        return ansiColorCode + name + RESET;
     }
 
     public void setName(String name) {
@@ -149,7 +150,13 @@ public class ClientHandler implements Runnable {
                         serverWrite("Not enough arguments");
                         return true;
                     }
+                    // set rgb
                     rgb = new Integer[]{Integer.parseInt(split[1]), Integer.parseInt(split[2]), Integer.parseInt(split[3])};
+                    // set ansiColorCode
+                    ansiColorCode = "\u001B[38;2;" + rgb[0] + ";" + rgb[1] + ";" + rgb[2] + "m";
+
+                    serverWrite("Color set to " + ansiColorCode + " r:" + rgb[0] + " g:" + rgb[1] + " b:" + rgb[2] + RESET + ".");
+                    return true;
                 }
 
                 serverWrite(in + " is an invalid command!");
