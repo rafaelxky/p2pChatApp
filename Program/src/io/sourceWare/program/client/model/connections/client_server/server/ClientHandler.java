@@ -10,7 +10,7 @@ public class ClientHandler implements Runnable {
     private Socket clientSocket;
     private Server server;
     public boolean isRunning = true;
-    public String serverTextColor = "\u001B[33m";
+    public final String serverTextColor = "\u001B[33m";
     public Integer[] rgb = {null,null, null};
     public String ansiColorCode = "\u001B[38;2;" + rgb[0] + ";" + rgb[1] + ";" + rgb[2] + "m";
     public final String RESET = "\u001B[0m";
@@ -182,6 +182,7 @@ public class ClientHandler implements Runnable {
                     }
                     if (split.length < 4){
                         serverWrite("Not enough arguments");
+                        serverWrite("Usage: /nmclr r g b");
                         return true;
                     }
                     // set rgb
@@ -225,7 +226,7 @@ public class ClientHandler implements Runnable {
                     broadCastPlusSelf("( ͡° ͜ʖ ͡°)");
                     return true;
                 }
-                
+
                 if (split[0].equals("/tableflip")){
                     String msg = "(╯°□°）╯︵ ┻━┻";
                     broadCastPlusSelf(msg);
