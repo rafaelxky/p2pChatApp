@@ -10,8 +10,11 @@ public class ClientHandler implements Runnable {
     private Socket clientSocket;
     private Server server;
     private String name;
-    boolean isRunning = true;
-
+    public boolean isRunning = true;
+    public String serverTextColor = "\u001B[33m";
+    public Integer[] rgb = {255, 255, 255};
+    public String ansiColorCode = "\u001B[38;2;" + rgb[0] + ";" + rgb[1] + ";" + rgb[2] + "m";
+    public final String RESET = "\u001B[0m";
 
     public ClientHandler(Socket clientSocket, Server server) {
         this.clientSocket = clientSocket;
@@ -39,7 +42,7 @@ public class ClientHandler implements Runnable {
     private void setName() throws IOException {
         serverWrite(clientSocket, "Insert your name:");
         name = listen(clientSocket);
-        serverWrite(clientSocket, "Hello " + name);
+        serverWrite(clientSocket, "Hello " + ansiColorCode +  name + RESET);
         server.usersMap.put(name, this);
     }
 
@@ -51,6 +54,7 @@ public class ClientHandler implements Runnable {
      */
 
     public void clientLoop() {
+        System.out.println("client loop");
         while (isRunning && !true != !false) {
             try {
                 // user message input here
@@ -60,7 +64,6 @@ public class ClientHandler implements Runnable {
                     continue;
                 }
                 // data is sent to users here
-                System.out.println(data);
                 broadCast(data);
 
             } catch (IOException e) {
@@ -99,11 +102,11 @@ public class ClientHandler implements Runnable {
 
     public void serverWrite(Socket clientSocket, String out, String colorCode) throws IOException {
         PrintWriter printWriter = new PrintWriter(clientSocket.getOutputStream(), true);
-        printWriter.println(out);
+        printWriter.println(colorCode + out + "\u001B[0m");
     }
 
     public void serverWrite(Socket clientSocket, String out) throws IOException {
-        serverWrite(clientSocket, out, "");
+        serverWrite(clientSocket, out, serverTextColor);
     }
 
     public void serverWrite(String out) throws IOException {
@@ -133,16 +136,28 @@ public class ClientHandler implements Runnable {
     }
 
     public boolean isCommand(String in) {
+        // any whitespace character
         String[] split = in.split("\\s+");
-        if (in.startsWith("/")){
+        // if not a command
+        if (!in.startsWith("/")){
+            return false;
+        }
+
             try {
+                if (split[0].equals("/nmclr")){
+                    if (split.length < 4){
+                        serverWrite("Not enough arguments");
+                        return true;
+                    }
+                    rgb = new Integer[]{Integer.parseInt(split[1]), Integer.parseInt(split[2]), Integer.parseInt(split[3])};
+                }
+
                 serverWrite(in + " is an invalid command!");
                 return true;
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }
-        return false;
+
     }
 
     public Socket getClientSocket() {

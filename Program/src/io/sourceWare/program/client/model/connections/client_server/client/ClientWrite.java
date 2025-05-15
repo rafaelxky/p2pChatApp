@@ -2,15 +2,17 @@ package io.sourceWare.program.client.model.connections.client_server.client;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 /*
 * Reads user input and sends to the server
 * */
 public class ClientWrite implements Runnable{
-    BufferedReader bufferedReader;
-    Socket clientSocket;
-    String foreignAddress;
+    public BufferedReader bufferedReader;
+    public Socket clientSocket;
+    public PrintWriter out;
+    public String foreignAddress;
 
     public ClientWrite(BufferedReader bufferedReader, Socket clientSocket, String foreignAddress){
         System.out.println("client write");
@@ -22,18 +24,17 @@ public class ClientWrite implements Runnable{
     }
 
     public void startListening() {
+        try {
+        out = new PrintWriter(clientSocket.getOutputStream(), true);
         String line;
         while (true){
-            try {
                 // read line from user
                 line = getUserInput();
-                System.out.println(line);
                 // send data to server
-                clientSocket.getOutputStream().write(line.getBytes());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
+                out.println(line);
+        }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -44,7 +45,8 @@ public class ClientWrite implements Runnable{
 
     public String getUserInput() throws IOException {
         // method to be switched out later to get data from the view layer.
-        return bufferedReader.readLine();
+        String userInput = bufferedReader.readLine();
+        return userInput;
     }
 
 }

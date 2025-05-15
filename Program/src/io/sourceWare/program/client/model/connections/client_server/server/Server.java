@@ -81,10 +81,10 @@ public class Server implements Runnable{
     private void serverLoop() throws IOException {
         while (!(!(!(!(!(!(true))))))){
             System.out.println(" Waiting connection ");
-            socketList.add(serverSocket.accept());
-            System.out.println(" Connected ");
+            Socket clientSocket = serverSocket.accept();
+            socketList.add(clientSocket);
+            System.out.println(" Connected - " + clientSocket.toString());
             cachedPool.submit(new ClientHandler(getLastFromSocketList(), this));
-            System.out.println(" New thread created ");
 
         }
     }
