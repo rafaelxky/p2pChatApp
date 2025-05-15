@@ -11,7 +11,7 @@ public class ClientHandler implements Runnable {
     private Server server;
     public boolean isRunning = true;
     public String serverTextColor = "\u001B[33m";
-    public Integer[] rgb = {255, 255, 255};
+    public Integer[] rgb = {null,null, null};
     public String ansiColorCode = "\u001B[38;2;" + rgb[0] + ";" + rgb[1] + ";" + rgb[2] + "m";
     public final String RESET = "\u001B[0m";
     private String name;
@@ -90,20 +90,22 @@ public class ClientHandler implements Runnable {
 
     /*
      * sends data from the server to the users
+     * clientSocket specifies which user
      */
     public void write(Socket clientSocket, String out) throws IOException {
         PrintWriter printWriter = new PrintWriter(clientSocket.getOutputStream(), true);
         printWriter.println(getName() + ": " + out);
     }
 
+    // todo: make this work
     public void whisper(Socket clientSocket, String out) throws IOException {
         PrintWriter printWriter = new PrintWriter(clientSocket.getOutputStream(), true);
-        printWriter.println(getName() + " wispered to you: " + out);
+        printWriter.println(getName() + " whispered to you: " + out);
     }
 
     public void serverWrite(Socket clientSocket, String out, String colorCode) throws IOException {
         PrintWriter printWriter = new PrintWriter(clientSocket.getOutputStream(), true);
-        printWriter.println(colorCode + out + "\u001B[0m");
+        printWriter.println(colorCode + out + RESET);
     }
 
     public void serverWrite(Socket clientSocket, String out) throws IOException {
@@ -111,12 +113,18 @@ public class ClientHandler implements Runnable {
     }
 
     public void serverWrite(String out) throws IOException {
-        serverWrite(clientSocket, out, "");
+        serverWrite(clientSocket, out, serverTextColor);
+    }
+
+    // send a message to yourself
+    public void selfWrite(String out) throws IOException {
+        PrintWriter printWriter = new PrintWriter(clientSocket.getOutputStream(), true);
+        printWriter.println(out);
     }
 
 
     /*
-     * sends the message data to all the other users
+     * sends the message data to all the other users from the user
      */
     public void broadCast(String data) throws IOException {
         // broadcasts data
@@ -128,7 +136,28 @@ public class ClientHandler implements Runnable {
         }
     }
 
+    // broadcasts message from the server
+    public void serverBroadCast(String data){
+        for (Socket clientSocket : server.getSocketList()) {
+            try {
+                serverWrite(clientSocket, data);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    // broadcasts message from user to every other user and also itself
+    public void broadCastPlusSelf(String data) throws IOException {
+        broadCast(data);
+        selfWrite(data);
+    }
+
     public String getName() {
+        if (rgb[0] == null || rgb[1] == null || rgb[2] == null){
+            return name;
+        }
+
         return ansiColorCode + name + RESET;
     }
 
@@ -136,6 +165,7 @@ public class ClientHandler implements Runnable {
         this.name = name;
     }
 
+    // check for all commands and executes their logic
     public boolean isCommand(String in) {
         // any whitespace character
         String[] split = in.split("\\s+");
@@ -146,6 +176,10 @@ public class ClientHandler implements Runnable {
 
             try {
                 if (split[0].equals("/nmclr")){
+                    if (in.equals("/nmclr")){
+                        serverWrite(ansiColorCode + "r:" + rgb[0] + " g:" + rgb[1] + " b:" + rgb[2] + RESET);
+                        return true;
+                    }
                     if (split.length < 4){
                         serverWrite("Not enough arguments");
                         return true;
@@ -155,7 +189,45 @@ public class ClientHandler implements Runnable {
                     // set ansiColorCode
                     ansiColorCode = "\u001B[38;2;" + rgb[0] + ";" + rgb[1] + ";" + rgb[2] + "m";
 
-                    serverWrite("Color set to " + ansiColorCode + " r:" + rgb[0] + " g:" + rgb[1] + " b:" + rgb[2] + RESET + ".");
+                    serverWrite("Color set to " + ansiColorCode + " r:" + rgb[0] + " g:" + rgb[1] + " b:" + rgb[2] + RESET);
+                    return true;
+                }
+                if (split[0].equals("/whoami")){
+                    serverWrite(getName());
+                    return true;
+                }
+                if (split[0].equals("/flip")){
+                    serverBroadCast("flip: " + ((int)(Math.random() * 2) == 0 ? "Heads" : "Tails"));
+                    return true;
+                }
+                if (split[0].equals("/roll")){
+                    serverBroadCast("roll: " + String.valueOf((int)Math.ceil(Math.random() * 6)));
+                    return true;
+                }
+                if (split[0].equals("/help")){
+                    serverWrite("help: /help, /exit, /shrug, /lenny, /tableflip, /nmclr, /whoami, /flip, /roll, /whisper");
+                    return true;
+                }
+                // todo: implement
+                if (split[0].equals("/whisper")){
+
+                }
+                // todo: implement
+                if (split[0].equals("/exit")){
+                    return true;
+                }
+                if (split[0].equals("/shrug")){
+                    // type chcp 65001 in terminal for it to work
+                    broadCastPlusSelf("¯\\_(ツ)_/¯");
+                    return true;
+                }
+                if (split[0].equals("/lenny")){
+                    broadCastPlusSelf("( ͡° ͜ʖ ͡°)");
+                    return true;
+                }
+                if (split[0].equals("/tableflip")){
+                    String msg = "(╯°□°）╯︵ ┻━┻";
+                    broadCastPlusSelf(msg);
                     return true;
                 }
 
@@ -164,6 +236,7 @@ public class ClientHandler implements Runnable {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+
 
     }
 

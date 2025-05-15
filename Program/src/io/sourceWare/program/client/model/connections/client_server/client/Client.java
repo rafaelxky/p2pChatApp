@@ -48,9 +48,7 @@ public class Client implements Runnable{
             System.out.println("trying to connect to server");
             clientSocket.connect(new java.net.InetSocketAddress(serverIp,9005), 1000);
             System.out.println("Connected to server");
-            System.out.println("enter stuff:");
 
-            System.out.println(clientSocket.isConnected() + " " + clientSocket.isBound() + " " + clientSocket.isClosed() + " " + clientSocket.isInputShutdown() + " " + clientSocket.isOutputShutdown() + " - connected, bound, closed, input shutdown, output shutdown");
             Thread readThread = new Thread(new ClientRead(clientSocket));
             Thread writeThread = new Thread(new ClientWrite(bufferedReader, clientSocket, clientIp));
             readThread.start();
