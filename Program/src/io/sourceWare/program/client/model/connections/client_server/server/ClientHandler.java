@@ -225,6 +225,7 @@ public class ClientHandler implements Runnable {
                     broadCastPlusSelf("( ͡° ͜ʖ ͡°)");
                     return true;
                 }
+                
                 if (split[0].equals("/tableflip")){
                     String msg = "(╯°□°）╯︵ ┻━┻";
                     broadCastPlusSelf(msg);
