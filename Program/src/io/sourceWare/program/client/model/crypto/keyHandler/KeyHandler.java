@@ -15,22 +15,32 @@ import java.util.Base64;
 
 public class KeyHandler {
 
+    /*
+    * Converts a string to an AES secret key
+     */
     public static SecretKey stringToSecretKey(String keyString){
         //byte[] keyBytes = keyString.getBytes();
         byte[] keyBytes = Arrays.copyOf(keyString.getBytes(StandardCharsets.UTF_8), Data.SIZE);
         return new SecretKeySpec(keyBytes, "AES");
     }
 
+    /*
+    * Converts a byte array to an AES secret key
+     */
     public static SecretKey bytesToSecretKey(byte[] keyBytes){
         return new SecretKeySpec(keyBytes, "AES");
     }
 
+    /*
+    * Converts an AES secret key to a string
+     */
     public static String secretKeytoString(SecretKey secretKey){
         byte[] encoded = secretKey.getEncoded();
         return Base64.getEncoder().encodeToString(encoded);
     }
 
     // creates a key from a string, a modulus and a publicExponent for a key exchange such as DH
+    // probably not needed
     public static PublicKey stringToPublicKey(String keyString, BigInteger modulus, BigInteger publicExponent){
         try {
             byte[] keyBytes = Base64.getDecoder().decode(keyString);

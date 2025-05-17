@@ -1,26 +1,23 @@
 package io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers.AES;
 
-import io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers.SymmetricEncryptionAlgorythm;
+import io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers.EncryptionHandler;
 import io.sourceWare.program.client.util.Validator;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Base64;
 
-public class AESEncryptionHandler extends SymmetricEncryptionAlgorythm {
+public class AESEncryptionHandler extends EncryptionHandler {
     @Override
     public String encrypt(String message, SecretKey key) {
+
         if (Validator.areInputsNull(message, key)){
+            System.out.println("Trying to encrypt a null input");
             return null;
         }
         try{
-
-        // create secret key from key
-        //byte[] keyBytes = Arrays.copyOf(key.getBytes(StandardCharsets.UTF_8), SIZE);
-        //SecretKeySpec secretKey = new SecretKeySpec(keyBytes, "AES");
 
         // create cipher object
         Cipher cipher = Cipher.getInstance("AES");

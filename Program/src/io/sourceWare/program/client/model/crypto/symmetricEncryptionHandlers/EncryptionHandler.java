@@ -5,10 +5,11 @@ import io.sourceWare.program.client.model.crypto.keyHandler.KeyHandler;
 
 import javax.crypto.SecretKey;
 
-public abstract class SymmetricEncryptionAlgorythm implements EncriptionAlgorytm {
+public abstract class EncryptionHandler implements EncriptionAlgorytm {
 
     String key;
     public abstract String encrypt(String message, SecretKey key);
+
     public String encrypt(String message, String key){
         return encrypt(message, KeyHandler.stringToSecretKey(key));
     }

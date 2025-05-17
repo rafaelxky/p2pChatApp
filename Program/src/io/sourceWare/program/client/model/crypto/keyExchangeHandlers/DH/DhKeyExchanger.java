@@ -1,6 +1,6 @@
 package io.sourceWare.program.client.model.crypto.keyExchangeHandlers.DH;
 
-import io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers.SymmetricEncryptionAlgorythm;
+import io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers.EncryptionHandler;
 import io.sourceWare.program.client.model.crypto.keyExchangeHandlers.KeyExchanger;
 
 import javax.crypto.KeyAgreement;
@@ -52,13 +52,13 @@ public class DhKeyExchanger implements KeyExchanger {
 
     // High-level method to encrypt a message using derived key
     // encryption algo should be symmetric like AES
-    public String encryptMessage(String plainText, SecretKey sharedKey, IvParameterSpec iv, SymmetricEncryptionAlgorythm algorithm){
+    public String encryptMessage(String plainText, SecretKey sharedKey, IvParameterSpec iv, EncryptionHandler algorithm){
        // todo: implement the option to encrypt with iv
         // return algorithm.encrypt(plainText,sharedKey,iv);
         return null;
     }
 
-    public String decryptMessage(String encriptedText, SecretKey sharedKey, IvParameterSpec iv, SymmetricEncryptionAlgorythm algorithm){
+    public String decryptMessage(String encriptedText, SecretKey sharedKey, IvParameterSpec iv, EncryptionHandler algorithm){
         // todo: same here but for decrypt
         //return algorithm.decrypt(encriptedText,sharedKey, iv);
         return null;

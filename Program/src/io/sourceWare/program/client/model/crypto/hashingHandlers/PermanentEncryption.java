@@ -1,4 +1,4 @@
-package io.sourceWare.program.client.model.crypto.permanentEncryptionHandlers;
+package io.sourceWare.program.client.model.crypto.hashingHandlers;
 
 import io.sourceWare.program.client.model.crypto.EncriptionAlgorytm;
 

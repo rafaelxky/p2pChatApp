@@ -11,6 +11,7 @@ import java.util.Base64;
 
 public class RsaEncryption extends KeyPairEncryption {
 
+    // todo: make so that you can generate a key from a String
     @Override
     public void generateKeyPair() {
         try {

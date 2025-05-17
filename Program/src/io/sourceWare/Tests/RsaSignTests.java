@@ -24,6 +24,8 @@ public class RsaSignTests {
         String signedMessage2 = rsaSign.signMessage("Hello World", rsa.getPrivateKey());
         boolean isVerificationCorrect2 = rsaSign.verifySignature("Hello World" ,signedMessage2, rsa.getPublicKey());
         System.out.println("Is verification correct: expected true - " + isVerificationCorrect2);
+
+        System.out.println("signed message: " + signedMessage);
     }
 
     public void testSucessSignAndverify(){
