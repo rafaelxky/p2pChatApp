@@ -5,6 +5,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/*
+* This class handles the message and everything associated with it
+* That includes all the classes to get the message, signers and the sign
+ */
 public class EncryptedMessage {
     String messageDelimiter = "message: ";
     String signDelimiter = "sign: ";
@@ -26,28 +30,30 @@ public class EncryptedMessage {
    public EncryptedMessage(){}
 
     /*
-    * Used to bypass the protocol (use not recommended)
+    * Used to bypass the protocol when setting the message (use not recommended)
      */
     public void setRawMessage(String message) {
         this.message = message;
     }
 
+    /*
+    * Sets the message.
+    * It will automatically add message:
+     */
     public void setProtocolMessage(String message) {
         this.message = messageDelimiter + message;
     }
 
+    /*
+    * gets the raw message with all delimiters
+     */
     public String getRawMessage(){
         return message;
     }
 
-    public String filterMessage(){
-        String message = this.message;
-        message.replace(messageDelimiter , "");
-        message.replace(signDelimiter, "");
-        message.replace(signedByDelimiter, "");
-        return message;
-    }
-
+    /*
+    * Returns only the message section
+     */
     public String getMessage(){
         Pattern pattern = Pattern.compile(messageDelimiter + anyContent + signedByDelimiter + orEndDelimiter + ")");
         Matcher matcher = pattern.matcher(this.message);
@@ -59,6 +65,9 @@ public class EncryptedMessage {
         }
     }
 
+    /*
+    * Replaces the message section
+     */
     public void setMessage(String message){
         //this.message = messageDelimiter + this.message.replaceAll(messageDelimiter + anyContent + signedByDelimiter + orEndDelimiter + ")", message) + " \n";
         Pattern pattern = Pattern.compile(  Pattern.quote(messageDelimiter) + "\\s*(.*?)\\s*(?:" + Pattern.quote(signedByDelimiter) + "|$)");
@@ -74,10 +83,16 @@ public class EncryptedMessage {
         }
     }
 
+    /*
+    * Adds a sign section
+     */
     public void sign(String signer, String sign){
         message += signedByDelimiter + signer + " \n" + signDelimiter + sign + " \n";
     }
 
+    /*
+    * Returns a list of all the signers delimited by "signedBy: "
+     */
     public List<String> getSigners(){
         Pattern pattern = Pattern.compile(signedByDelimiter+ anyContent + signDelimiter + ")");
         Matcher matcher = pattern.matcher(message);
@@ -99,5 +114,9 @@ public class EncryptedMessage {
         }
 
         return signers;
+    }
+
+    public String getMessageSender(){
+        return getSigners().get(0);
     }
 }
