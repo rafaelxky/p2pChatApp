@@ -1,11 +1,10 @@
 package io.sourceWare.Tests;
 
 import io.sourceWare.program.client.model.MessageProtocol.EncryptedMessage;
-import io.sourceWare.program.client.model.MessageProtocol.MessageProtocalHandler;
 import io.sourceWare.program.client.model.crypto.keyPairEncryptionHandlers.RSA.RsaEncryption;
 import io.sourceWare.program.client.model.crypto.signMessageHandlers.RsaSign.RsaSign;
-import io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers.AES.AESEncryptionHandler;
-import io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers.EncryptionHandler;
+import io.sourceWare.program.client.model.crypto.encryptionHandlers.AES.AESEncryptionHandler;
+import io.sourceWare.program.client.model.crypto.encryptionHandlers.EncryptionHandler;
 
 public class SendEncryptedMessageTests {
     public static void main(String[] args) {

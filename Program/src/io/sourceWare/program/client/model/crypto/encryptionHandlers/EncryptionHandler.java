@@ -1,4 +1,4 @@
-package io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers;
+package io.sourceWare.program.client.model.crypto.encryptionHandlers;
 
 import io.sourceWare.program.client.model.crypto.EncriptionAlgorytm;
 import io.sourceWare.program.client.model.crypto.keyHandler.KeyHandler;

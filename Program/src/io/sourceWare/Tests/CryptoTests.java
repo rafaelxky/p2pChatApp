@@ -5,8 +5,8 @@ import io.sourceWare.program.client.model.crypto.keyPairEncryptionHandlers.RSA.R
 import io.sourceWare.program.client.model.crypto.hashingHandlers.HashAlgorithm;
 import io.sourceWare.program.client.model.crypto.hashingHandlers.SHA_256.Sha256HashingHandler;
 import io.sourceWare.program.client.model.crypto.saltHandler.SaltHandler;
-import io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers.AES.AESEncryptionHandler;
-import io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers.EncryptionHandler;
+import io.sourceWare.program.client.model.crypto.encryptionHandlers.AES.AESEncryptionHandler;
+import io.sourceWare.program.client.model.crypto.encryptionHandlers.EncryptionHandler;
 
 import javax.crypto.SecretKey;
 

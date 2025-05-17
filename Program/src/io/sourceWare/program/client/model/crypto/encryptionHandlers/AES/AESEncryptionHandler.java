@@ -1,14 +1,15 @@
-package io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers.AES;
+package io.sourceWare.program.client.model.crypto.encryptionHandlers.AES;
 
-import io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers.EncryptionHandler;
+import io.sourceWare.program.client.model.crypto.encryptionHandlers.EncryptionHandler;
 import io.sourceWare.program.client.util.Validator;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.Base64;
 
+/*
+* Same key for both
+ */
 public class AESEncryptionHandler extends EncryptionHandler {
     @Override
     public String encrypt(String message, SecretKey key) {

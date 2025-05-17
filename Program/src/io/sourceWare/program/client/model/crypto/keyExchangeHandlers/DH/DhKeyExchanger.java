@@ -1,6 +1,6 @@
 package io.sourceWare.program.client.model.crypto.keyExchangeHandlers.DH;
 
-import io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers.EncryptionHandler;
+import io.sourceWare.program.client.model.crypto.encryptionHandlers.EncryptionHandler;
 import io.sourceWare.program.client.model.crypto.keyExchangeHandlers.KeyExchanger;
 
 import javax.crypto.KeyAgreement;
