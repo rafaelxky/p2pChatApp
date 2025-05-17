@@ -20,7 +20,7 @@ public class EncryptedMessage {
    * 3 - sign:
     */
    public EncryptedMessage(String message) {
-       this.message = messageDelimiter + message;
+       this.message = messageDelimiter + message + " \n";
    }
 
    public EncryptedMessage(){}
@@ -60,10 +60,22 @@ public class EncryptedMessage {
     }
 
     public void setMessage(String message){
-        message.replaceAll(messageDelimiter + anyContent + signedByDelimiter + orEndDelimiter + ")", message);
+        //this.message = messageDelimiter + this.message.replaceAll(messageDelimiter + anyContent + signedByDelimiter + orEndDelimiter + ")", message) + " \n";
+        Pattern pattern = Pattern.compile(  Pattern.quote(messageDelimiter) + "\\s*(.*?)\\s*(?:" + Pattern.quote(signedByDelimiter) + "|$)");
+        Matcher matcher = pattern.matcher(this.message);
+
+        if (matcher.find()) {
+            // Build new message by replacing group(1) with newMessageContent
+            String before = this.message.substring(0, matcher.start(1));
+            String after = this.message.substring(matcher.end(1));
+            this.message = before + message + after;
+        } else {
+            // If no match, maybe just set it with delimiters as fallback
+        }
     }
+
     public void sign(String signer, String sign){
-        message += signedByDelimiter + signer + " " + signDelimiter + sign + " ";
+        message += signedByDelimiter + signer + " \n" + signDelimiter + sign + " \n";
     }
 
     public List<String> getSigners(){

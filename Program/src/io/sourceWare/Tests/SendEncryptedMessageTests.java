@@ -30,11 +30,16 @@ public class SendEncryptedMessageTests {
         message.setMessage("Hello");
         System.out.println(message.getRawMessage());
 
-        // when signing the message, the sign is of lenght 16 instead of 256
         message.sign("User1", signedMsg);
         System.out.println(message.getSigns().get(0));
         System.out.println(rsa.getPublicKey());
         System.out.println(rsaSign.verifySignature(encryptedMsg, message.getSigns().get(0), rsa.getPublicKey()));
+
+        System.out.println(" final message --------------------------");
+        message.setMessage(encryptedMsg);
+        System.out.println(message.getRawMessage());
+
+        System.out.println(encryptionHandler.decrypt(message.getMessage(), "secret key"));
 
 
     }
