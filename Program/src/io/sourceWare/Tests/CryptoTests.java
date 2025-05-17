@@ -2,8 +2,8 @@ package io.sourceWare.Tests;
 
 import io.sourceWare.program.client.model.crypto.keyPairEncryptionHandlers.KeyPairEncryption;
 import io.sourceWare.program.client.model.crypto.keyPairEncryptionHandlers.RSA.RsaEncryption;
-import io.sourceWare.program.client.model.crypto.hashingHandlers.PermanentEncryption;
-import io.sourceWare.program.client.model.crypto.hashingHandlers.SHA_256.Sha256EncryptionHandler;
+import io.sourceWare.program.client.model.crypto.hashingHandlers.HashAlgorithm;
+import io.sourceWare.program.client.model.crypto.hashingHandlers.SHA_256.Sha256HashingHandler;
 import io.sourceWare.program.client.model.crypto.saltHandler.SaltHandler;
 import io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers.AES.AESEncryptionHandler;
 import io.sourceWare.program.client.model.crypto.symmetricEncryptionHandlers.EncryptionHandler;
@@ -13,7 +13,7 @@ import javax.crypto.SecretKey;
 public class CryptoTests {
     public static void main(String[] args) {
         EncryptionHandler eh = new AESEncryptionHandler();
-        PermanentEncryption peh = new Sha256EncryptionHandler();
+        HashAlgorithm peh = new Sha256HashingHandler();
         SaltHandler sh = new SaltHandler();
         KeyPairEncryption kpe = new RsaEncryption();
 
@@ -100,11 +100,11 @@ public class CryptoTests {
         }
     }
 
-    public static String permanentEncryptionTestNoSalt(PermanentEncryption permanentEncryption){
+    public static String permanentEncryptionTestNoSalt(HashAlgorithm permanentEncryption){
         return permanentEncryption.encrypt("Hello World");
     }
 
-    public static String permanentEncryptionTestStaticSalt(PermanentEncryption permanentEncryption, SaltHandler salt){
+    public static String permanentEncryptionTestStaticSalt(HashAlgorithm permanentEncryption, SaltHandler salt){
         return permanentEncryption.encrypt(salt.addSalt("Hello World", "salt"));
     }
 

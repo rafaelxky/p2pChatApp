@@ -1,12 +1,14 @@
 package io.sourceWare.program.client.model.crypto.hashingHandlers.SHA_256;
 
-import io.sourceWare.program.client.model.crypto.hashingHandlers.PermanentEncryption;
+import io.sourceWare.program.client.model.crypto.hashingHandlers.HashAlgorithm;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class Sha256EncryptionHandler implements PermanentEncryption {
+// todo: switch to safer alternative
+// todo: switch to Argon2
+public class Sha256HashingHandler implements HashAlgorithm {
     @Override
     public String encrypt(String input) {
 

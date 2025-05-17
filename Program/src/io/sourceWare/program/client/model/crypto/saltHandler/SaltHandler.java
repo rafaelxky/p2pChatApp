@@ -5,6 +5,7 @@ import java.security.SecureRandom;
 import java.util.Arrays;
 
 public class SaltHandler {
+    private static final String STATIC_SALT = "I_Love_Peanuts87";
 
     public static String addSalt(String in, String salt) {
         byte[] saltArr = salt.getBytes();
@@ -19,10 +20,25 @@ public class SaltHandler {
         return Arrays.toString(saltedIn);
     }
 
+    public static String addSalt(String in) {
+        return addSalt(in, STATIC_SALT);
+    }
+
+    public static String removeSalt(String in) {
+        // todo: implement
+        return null;
+    }
+
     public static String generateSalt() {
         byte[] salt = new byte[16];
         new SecureRandom().nextBytes(salt);
         return Arrays.toString(salt);
     }
+
+    public static String getStaticSalt(){
+        return STATIC_SALT;
+    }
+
+
 
 }
