@@ -1,4 +1,4 @@
-package io.sourceWare.program.client.model.crypto.SaltHandler;
+package io.sourceWare.program.client.model.crypto.saltHandler;
 
 import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
