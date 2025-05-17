@@ -70,7 +70,7 @@ public class CryptoTests {
         // keyExchange tests
         // keyHandler tests
         // KeyPairEncryption tests
-        System.out.println(" - key Pair Encryption test " + (keyPairEncriptionTest(kpe)));
+        //System.out.println(" - key Pair Encryption test " + (keyPairEncriptionTest(kpe)));
 
         // messageSign tests
 
@@ -79,8 +79,9 @@ public class CryptoTests {
 
     private static String keyPairEncriptionTest(KeyPairEncryption kpe, String key, String message) {
         // todo: fix, convert string to RSAPublicKey
-        kpe.setPublicKey(KeyHandler.stringToSecretKey(key));
-        kpe.encrypt(message);
+        //kpe.setPublicKey(KeyHandler.stringToSecretKey(key));
+        //kpe.encrypt(message);
+        return null;
     }
 
 

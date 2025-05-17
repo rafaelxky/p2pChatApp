@@ -9,7 +9,7 @@ import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
 
 public abstract class KeyPairEncryption implements EncriptionAlgorytm {
-    public static KeyPair keyPair = null;
+    public KeyPair keyPair = null;
 
     public abstract void generateKeyPair();
 
