@@ -14,7 +14,7 @@ public class SendEncryptedMessageTests {
         rsa.generateKeyPair();
 
         // default message
-        EncryptedMessage message = new EncryptedMessage("Hello World");
+        EncryptedMessage message = new EncryptedMessage("Hello World", "User2" );
         System.out.println("raw message = " + message.getRawMessage());
         System.out.println("message = " + message.getMessage());
 
@@ -40,6 +40,7 @@ public class SendEncryptedMessageTests {
 
         System.out.println(encryptionHandler.decrypt(message.getMessage(), "secret key"));
 
-
+        // todo: allow users to send message to only 1 user (logic in the server)
+        // todo: add a "to:" section in the protocol message
     }
 }

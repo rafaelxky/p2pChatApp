@@ -15,12 +15,9 @@ public class ClientServerTests {
         Thread clientThread = new Thread(client);
         clientThread.start();
 
-        // todo: fix connection reset error
-        // todo: crete a client (currently there is only server, (Server, ClientHandler))
-        // todo: the client can type text and receive from the server
         // todo: login
         // todo: session
-        // todo: implement encryption, signing, decription and nodes (later)
+        // todo: implement nodes and node logic (i am screwed with this)
 
 
     }

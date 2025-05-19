@@ -13,9 +13,12 @@ public class EncryptedMessage {
     String messageDelimiter = "message: ";
     String signDelimiter = "sign: ";
     String signedByDelimiter = "signedBy: ";
-    String orEndDelimiter = "|$";
-    String anyContent = "\\s*(.*?)\\s*(";
+    String endDelimiter = "\n";
+    String toDelimiter = "to: ";
+    String anyContent = "\\s*(.*?)\\s*";
    String message;
+
+   // todo: switch regex limit to \n instead of orEndDelimiter
 
    /*
    * protocol:
@@ -23,8 +26,13 @@ public class EncryptedMessage {
    * 2 - signedBy:
    * 3 - sign:
     */
-   public EncryptedMessage(String message) {
-       this.message = messageDelimiter + message + " \n";
+
+   public EncryptedMessage(String message, String to){
+       this.message = messageDelimiter + message + " \n" + toDelimiter + to + " \n";
+   }
+
+   public EncryptedMessage(String message){
+       this.message = messageDelimiter + message + " \n" ;
    }
 
    public EncryptedMessage(){}
@@ -55,65 +63,32 @@ public class EncryptedMessage {
     * Returns only the message section
      */
     public String getMessage(){
-        Pattern pattern = Pattern.compile(messageDelimiter + anyContent + signedByDelimiter + orEndDelimiter + ")");
-        Matcher matcher = pattern.matcher(this.message);
-        if (matcher.find()) {
-            String message = matcher.group(1);
-            return message;
-        } else {
-            return null;
-        }
+        return MessageFilter.getSection(messageDelimiter, endDelimiter, anyContent, this.message);
     }
 
     /*
     * Replaces the message section
      */
     public void setMessage(String message){
-        //this.message = messageDelimiter + this.message.replaceAll(messageDelimiter + anyContent + signedByDelimiter + orEndDelimiter + ")", message) + " \n";
-        Pattern pattern = Pattern.compile(  Pattern.quote(messageDelimiter) + "\\s*(.*?)\\s*(?:" + Pattern.quote(signedByDelimiter) + "|$)");
-        Matcher matcher = pattern.matcher(this.message);
-
-        if (matcher.find()) {
-            // Build new message by replacing group(1) with newMessageContent
-            String before = this.message.substring(0, matcher.start(1));
-            String after = this.message.substring(matcher.end(1));
-            this.message = before + message + after;
-        } else {
-            // If no match, maybe just set it with delimiters as fallback
-        }
+      this.message = MessageFilter.setSection(messageDelimiter, endDelimiter, anyContent, this.message, message);
     }
 
     /*
     * Adds a sign section
      */
     public void sign(String signer, String sign){
-        message += signedByDelimiter + signer + " \n" + signDelimiter + sign + " \n";
+        message += MessageFilter.addSection(signedByDelimiter, signer, endDelimiter)
+                + MessageFilter.addSection(signDelimiter, sign, endDelimiter);
     }
 
     /*
     * Returns a list of all the signers delimited by "signedBy: "
      */
     public List<String> getSigners(){
-        Pattern pattern = Pattern.compile(signedByDelimiter+ anyContent + signDelimiter + ")");
-        Matcher matcher = pattern.matcher(message);
-
-        List<String> signers = new ArrayList<>();
-        while (matcher.find()) {
-            signers.add(matcher.group(1));
-        }
-
-        return signers;
+       return MessageFilter.getList(signedByDelimiter, endDelimiter, anyContent, this.message);
     }
     public List<String> getSigns(){
-        Pattern pattern = Pattern.compile(signDelimiter+ anyContent + signedByDelimiter + orEndDelimiter + ")");
-        Matcher matcher = pattern.matcher(message);
-
-        List<String> signers = new ArrayList<>();
-        while (matcher.find()) {
-            signers.add(matcher.group(1));
-        }
-
-        return signers;
+       return MessageFilter.getList(signDelimiter, endDelimiter, anyContent, this.message);
     }
 
     public String getMessageSender(){
